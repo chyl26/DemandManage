@@ -63,8 +63,8 @@ namespace REQM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            return View(DBCRUD.GetRepDetailedById(Id));
+            RepDetailed RepDetailed = DBCRUD.GetRepDetailedById(Id);
+            return View("Edit", RepDetailed.ToModel());
         }
 
         [ValidateInput(false)]

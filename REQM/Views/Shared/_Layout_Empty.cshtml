@@ -1,39 +1,35 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
 
-    <!-- include summernote css/js-->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <!-- 引用 移动设备优先设置项-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>@ViewBag.Title</title>
-
-    <!-- 加载压缩过的css和css5支持验证的js -->
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/main")
-    @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("head", required: false)*@
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 产品经理助手</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Scripts/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 </head>
-<body>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
 
-    <!-- 这里是一个占位符，用于加载子页面的需要加载的东西, required表示这个占位在子页面是否是必须指定的 -->
-    <!-- 子页面中指定的方式就是@section scripts{//这里面可以引用当前子页面需要的css及js等} //子页面的scripts名字的要模版页的名字一样 -->
+<body class="container">
+    <h2 class="page-header">@ViewBag.Title</h2>
+    <section>
+
+        @RenderBody()
+
+        <footer>
+            <hr />
+            <p align="center">&copy;@DateTime.Now.Year 版权所有人陈永亮</p>
+        </footer>
+
+
+    </section>
+
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
-
-
-@{
-    ViewBag.Title = "管理页面";
-    ViewBag.NavActive = 0;//设置导航激活
-}

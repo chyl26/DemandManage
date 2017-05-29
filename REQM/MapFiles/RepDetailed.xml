@@ -111,7 +111,7 @@
           ,a.Revision
           ,a.UserId
           ,u.DisplayName
-          FROM Repdetaileds a left join Users u on a.UserId = u.UserId left join ProductInfos p on a.ProductId = p.ProductId 
+          FROM Repdetaileds a left join Users u on a.UserId = u.UserId left join ProductInfos p on a.ProductId = p.ProductId
           ]]>
       <dynamic prepend="WHERE">
         <isNotEmpty prepend="AND" property="ProductId">

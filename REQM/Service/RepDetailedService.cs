@@ -26,7 +26,7 @@ namespace REQM.Service
         /// <returns></returns>
         public RepDetailed GetRepDetailedById(string repDetailedId)
         {
-            RepDetailed repDetailed = repository.GetByCondition("SelectRepDetailedByCondition", new RepDetailed { RepDetailedId = repDetailedId });
+            RepDetailed repDetailed = repository.GetByCondition("SelectRepDetailedByRepDetailedId", new RepDetailed { RepDetailedId = repDetailedId });
             return repDetailed;
         }
 

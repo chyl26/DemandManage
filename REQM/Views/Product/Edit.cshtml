@@ -1,0 +1,120 @@
+﻿@model REQM.Models.ProductModel
+
+@{
+    ViewBag.Title = "产品立项";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入产品名称" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.ProductId)
+        @Html.HiddenFor(model => model.CreateAt)
+        @Html.HiddenFor(model=>model.UserId)
+        @Html.HiddenFor(model => model.Productlogic)@*定义一个隐藏表用单于接收summernote数据*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Productlogic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="summernote" placeholder="请输入产品逻辑说明"></div>
+                @Html.ValidationMessageFor(model => model.Productlogic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Interactive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Interactive, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入交互需求" } })
+                @Html.ValidationMessageFor(model => model.Interactive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateRep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateRep, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入数据需求" } })
+                @Html.ValidationMessageFor(model => model.DateRep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OtherRep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OtherRep, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入非功能需求" } })
+                @Html.ValidationMessageFor(model => model.OtherRep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="btn-group pull-right">
+            <button type="submit" class="btn btn-primary" id="btnLogin">保存</button>
+            <button type="button" class="btn btn-default" id="btnRegister">取消</button>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <!-- 内部javascript -->
+    <script>
+        $(document).ready(function () {
+            var placeholder = $("#summernote").attr("placeholder") || '';//设置输入提示
+            var url = $("#summernote").attr("action") || '';//设置上传图片的url
+            $("#summernote").summernote({
+                lang: 'zh-CN',
+                placeholder: placeholder,
+                minHeight: 300,
+                maxHeight: 800,
+                dialogsFade: true,// 设置滑动效果Add fade effect on dialogs
+                dialogsInBody: true,// 设置窗口显示位置Dialogs can be placed in body, not in
+                disableDragAndDrop: false,//设置拖拽
+                callbacks: {
+                    onImageUpload: function (files) {
+                        $(files).each(function () {
+                            var file = this;
+                            var data = new FormData();
+                            data.append("file", file);
+                            //ajax上传图片
+                            $.ajax({
+                                url: url,
+                                type: "post",
+                                data: data,
+                                dataType: "json",
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (response) {
+                                    var jsonObj = JSON.parse(response);  // JSON.parse(); 方法
+                                    var jsonObj = JSON.parse(response);  // JSON.parse(); 方法
+                                    var imgNode = document.createElement('img');
+                                    imgNode.setAttribute('src', jsonObj.result);
+                                    $("#summernote").summernote('insertNode', imgNode);
+                                },
+                                error: function (response) {
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+
+            //初始化summernote的值
+            var encodevalue = $("#Productlogic").val();
+            //var decodevalue = htmlDecode(encodevalue);
+            $('#summernote').summernote('code', encodevalue);
+
+        });
+
+        //设置表单数值
+        $("form").submit(function (e) {
+            var makrup = $("#summernote").summernote('code');
+
+            //将文档编辑器的内容赋给要存储的属性（如Productlogic）
+            $("#Productlogic").val(makrup);
+        });
+
+    </script>
+}

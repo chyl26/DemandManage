@@ -1,0 +1,112 @@
+﻿@model RepDetailedModel
+
+@{
+    ViewBag.Title = "创建功能性需求";
+}
+
+@using (Html.BeginForm("Create", "RepDetailed", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RepName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.RepName, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入功能性需求名称" } })
+            @Html.ValidationMessageFor(m => m.RepName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Priority, new { htmlAttributes = new { @class = "form-control", placeholder = "优先级" } })
+            @Html.ValidationMessageFor(m => m.Priority, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.HiddenFor(Model => Model.ProductId)
+    @Html.HiddenFor(Model=>Model.RepDetailedId)
+    @Html.HiddenFor(Model => Model.RepDescribe)
+    <div class="form-group">
+        @Html.LabelFor(m => m.RepDescribe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div id="summernote" placeholder="请输入产品功能性需求"></div>
+            @Html.ValidationMessageFor(m => m.RepDescribe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Revision, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Revision, new { @class = "form-control", rows = 5, placeholder = "请输入修改记录" })
+            @Html.ValidationMessageFor(m => m.Revision, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col col-md-10">
+        <button type="submit" class="btn btn-primary btn-block" id="btnRegister">保存</button>
+    </div>
+
+}
+
+@section scripts{
+    <!-- 内部javascript -->
+    <script>
+        $(document).ready(function () {
+            var placeholder = $("#summernote").attr("placeholder") || '';//设置输入提示
+            var url = $("#summernote").attr("action") || '';//设置上传图片的url
+            $("#summernote").summernote({
+                lang: 'zh-CN',
+                placeholder: placeholder,
+                minHeight: 300,
+                maxHeight: 800,
+                dialogsFade: true,// 设置滑动效果Add fade effect on dialogs
+                dialogsInBody: true,// 设置窗口显示位置Dialogs can be placed in body, not in
+                disableDragAndDrop: false,//设置拖拽
+                callbacks: {
+                    onImageUpload: function (files) {
+                        $(files).each(function () {
+                            var file = this;
+                            var data = new FormData();
+                            data.append("file", file);
+                            //ajax上传图片
+                            $.ajax({
+                                url: url,
+                                type: "post",
+                                data: data,
+                                dataType: "json",
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (response) {
+                                    var jsonObj = JSON.parse(response);  // JSON.parse(); 方法
+                                    var jsonObj = JSON.parse(response);  // JSON.parse(); 方法
+                                    var imgNode = document.createElement('img');
+                                    imgNode.setAttribute('src', jsonObj.result);
+                                    $("#summernote").summernote('insertNode', imgNode);
+                                },
+                                error: function (response) {
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+
+            //初始化summernote的值
+            var encodevalue = $("#Productlogic").val();
+            //var decodevalue = htmlDecode(encodevalue);
+            $('#summernote').summernote('code', encodevalue);
+
+        });
+
+        //设置表单数值
+        $("form").submit(function (e) {
+            var makrup = $("#summernote").summernote('code');
+
+            //将文档编辑器的内容赋给要存储的属性（如Productlogic）
+            $("#RepDescribe").val(makrup);
+        });
+
+    </script>
+}

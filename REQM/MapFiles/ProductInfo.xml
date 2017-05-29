@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="ProductInfo" xmlns="http://ibatis.apache.org/mapping"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 设置别名，用于底下指定类型的时候不需要全全类名(包括长的空间名 ),最后一个参数是项目的命名空间名 -->
+  <alias>
+    <typeAlias alias="ProductInfo" type="REQM.Domain.ProductInfo, REQM"/>
+  </alias>
+
+  <!-- 数据库到实体类的映射表 -->
+  <resultMaps>
+
+    <!-- 数据库的全部字段到实体类的映射 -->
+    <resultMap id="SelectAllResult" class="ProductInfo">
+      <result property="ProductId" column="ProductId" dbType="char" type="string" />
+      <result property="ProductName" column="ProductName" dbType="varchar" type="string" />
+      <result property="ProductIntro" column="ProductIntro" dbType="varchar" type="string" />
+      <result property="Explains" column="Explains" dbType="varchar" type="string" />
+      <result property="CreateAt" column="CreateAt" dbType="DateTime" type="DateTime" />
+      <result property="user.UserId" column="UserId" dbType="char" type="string" />
+      <result property="user.DisplayName" column="DisplayName" dbType="varchar" type="string" />
+    </resultMap>
+
+
+    <!-- 这里可以配置其它只需要指定字段的映射文件(这里是不返回ID) -->
+  </resultMaps>
+
+  <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
+  <!-- 为了避免SQL语句出现的'<'和'>'会和配置文件的<>冲突，所以SQL语句都写在<![CDATA[  与  ]]>之间 -->
+  <statements>
+
+    <!-- 添加句子SQL语句 -->
+    <insert id="InsertProductInfo" parameterClass="ProductInfo" >
+      <![CDATA[  
+      insert into ProductInfos  
+      (ProductId,ProductName,ProductIntro,Explains,CreateAt,UserId)  
+      values  
+      (#ProductId#,#ProductName#,#ProductIntro#,#Explains#,#CreateAt#,#user.UserId#)  
+      ]]>
+    </insert>
+
+    <!-- parameterClass表示传入的参数为int -->
+    <delete id="DeleteProductInfo" parameterClass="ProductInfo">
+      <![CDATA[
+          delete from ProductInfos  
+          where  
+          ProductId = #ProductId#
+          ]]>
+    </delete>
+
+    <!-- #UserName# 表示传入实体类参数的属性，表示实体的的属性 -->
+    <update id="UpdateProductInfo" parameterClass="ProductInfo">
+      <![CDATA[  
+          UPDATE ProductInfos SET  
+          ProductName=#ProductName#,
+          ProductIntro=#ProductIntro#,
+          Explains=#Explains#,
+          UserId=#user.UserId#          
+          WHERE  
+          ProductId=#ProductId#  
+          ]]>
+    </update>
+
+    <!-- resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样 -->
+    <select id="SelectProductInfoByCondition"  parameterClass="ProductInfo" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.ProductName
+          ,a.ProductIntro
+          ,a.Explains
+          ,a.CreateAt
+          ,a.UserId
+          ,u.DisplayName
+          FROM ProductInfos a left join Users u on a.UserId = u.UserId 
+          ]]>
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="ProductId">
+          <![CDATA[  
+           a.ProductId = #ProductId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ProductName">
+          <![CDATA[  
+           a.ProductName = #ProductName#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ProductIntro">
+          <![CDATA[  
+           a.ProductIntro = #ProductIntro#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Explains">
+          <![CDATA[  
+           a.Explain = #Explains#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="user.UserId">
+          <![CDATA[  
+           a.UserId = #User.UserId#
+            ]]>
+        </isNotEmpty>
+        
+      </dynamic>
+    </select>
+    
+  </statements>
+
+</sqlMap>

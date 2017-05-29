@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <!-- 引用 移动设备优先设置项-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >@ViewBag.Title - 产品经理助手</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Scripts/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+</head>
+
+<body class="container">
+    <header>
+        <nav class="navbar navbar-inverse ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("MyHepler", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("首页", "Index", "Home")</li>
+                        <li>@Html.ActionLink("产品管理", "Index", "ProductInfo")</li>
+                        <li>@Html.ActionLink("分析工具", "Index", "Tools")</li>
+                        <li>@Html.ActionLink("我的笔记", "Index", "Notes")</li>
+                        <li>@Html.ActionLink("运营方案", "Index", "Operating")</li>
+                        <li>@Html.ActionLink("客服文档", "Index", "Help")</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @{
+                                var UserNanme = Session["User"] == null ? string.Empty : ((User)Session["User"]).UserName;
+                            }
+                            <a href="#">@UserNanme</a>
+                        </li>
+                        <li>
+                            @if (Session["User"] == null)
+                            {
+                                <a href="~/Account/Login">登录</a>
+                            }
+                            else
+                            {
+                                <a href="~/Account/Logoff">注销</a>
+                            }
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse">
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <h2 class="page-header">@ViewBag.Title</h2>
+
+    <footer>
+        <nav class="navbar-default navbar-fixed-bottom text-center">
+            &copy;@DateTime.Now.Year
+        </nav>
+    </footer>
+
+    <section>
+
+        @RenderBody()
+
+    </section>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

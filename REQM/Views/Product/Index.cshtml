@@ -1,0 +1,46 @@
+﻿@*@using PagedList.Mvc;*@
+@*@model PagedList.IPagedList<Product>*@
+@model List<Product>
+
+@{
+    ViewBag.Title = "立项产品列表";
+}
+
+<div class="panel panel-default">
+    @*标题操作区 align为位置属性*@
+    <div class="panel-heading" align="right">
+        <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/ProductInfo/Create/")">产品立项</a>
+    </div>
+    @*列表开始*@
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <tr>
+            <td align="center">@Html.LabelFor(m => m[0].ProductName)</td>
+            <td align="center" width="160">@Html.LabelFor(m => m[0].CreateAt)</td>
+            <td align="center" width="120">作者</td>
+            <td align="center" width="120">操作</td>
+        </tr>
+        @foreach (var Product in Model)
+        {
+            <tr>
+                <td align="center"><a href="@Url.Content("~/Product/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.ProductName)</a></td>
+                <td align="center"><a href="@Url.Content("~/Product/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.CreateAt)</a></td>
+                <td align="center"><a href="@Url.Content("~/Product/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.user.DisplayName)</a></td>
+                <td align="center">
+                    <a href="@Url.Content("~/Product/Details/"+Product.ProductId)">详情</a>
+                    <a href="@Url.Content("~/Product/Edit/"+Product.ProductId)">编辑</a>
+                    <a href="@Url.Content("~/Product/Delete/"+Product.ProductId)">删除</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<div>
+    
+</div>
+<div>
+    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+</div>
+
+

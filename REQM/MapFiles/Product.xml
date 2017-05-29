@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Product" xmlns="http://ibatis.apache.org/mapping"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 设置别名，用于底下指定类型的时候不需要全全类名(包括长的空间名 ),最后一个参数是项目的命名空间名 -->
+  <alias>
+    <typeAlias alias="Product" type="REQM.Domain.Product, REQM"/>
+  </alias>
+
+  <!-- 数据库到实体类的映射表 -->
+  <resultMaps>
+
+    <!-- 数据库的全部字段到实体类的映射 -->
+    <resultMap id="SelectAllResult" class="Product">
+      <result property="ProductId" column="ProductId" dbType="char" type="string" />
+      <result property="ProductName" column="ProductName" dbType="varchar" type="string" />
+      <result property="Productlogic" column="Productlogic" dbType="mediumtext" type="string" />
+      <result property="Characteristic" column="Characteristic" dbType="mediumtext" type="string" />
+      <result property="Interactive" column="Interactive" dbType="mediumtext" type="string" />
+      <result property="DateRep" column="DateRep" dbType="mediumtext" type="string" />
+      <result property="OtherRep" column="OtherRep" dbType="mediumtext" type="string" />
+      <result property="CreateAt" column="CreateAt" dbType="DateTime" type="DateTime" />
+      <result property="UpdateAt" column="UpdateAt" dbType="DateTime" type="DateTime" />
+      <result property="user.UserId" column="UserId" dbType="char" type="string" />
+      <result property="user.DisplayName" column="DisplayName" dbType="varchar" type="string" />
+    </resultMap>
+
+    <!-- 这里可以配置其它只需要指定字段的映射文件(这里是不返回ID) -->
+  </resultMaps>
+
+  <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
+  <!-- 为了避免SQL语句出现的'<'和'>'会和配置文件的<>冲突，所以SQL语句都写在<![CDATA[  与  ]]>之间 -->
+  <statements>
+
+    <!-- 添加句子SQL语句 -->
+    <insert id="InsertProduct" parameterClass="Product" >
+      <![CDATA[  
+      insert into Products  
+      (ProductId,ProductName,Productlogic,Characteristic,Interactive,DateRep,OtherRep,CreateAt,UpdateAt,UserId)  
+      values  
+      (#ProductId#,#ProductName#,#Productlogic#,#Characteristic#,#Interactive#,#DateRep#,#OtherRep#,#CreateAt#,#UpdateAt#,#user.UserId#)  
+      ]]>
+    </insert>
+
+    <!-- parameterClass表示传入的参数为int -->
+    <delete id="DeleteProduct" parameterClass="Product">
+      <![CDATA[
+          delete from Products  
+          where  
+          ProductId = #ProductId#
+          ]]>
+    </delete>
+
+    <!-- #UserName# 表示传入实体类参数的属性，表示实体的的属性 -->
+    <update id="UpdateProduct" parameterClass="Product">
+      <![CDATA[  
+          UPDATE Products SET  
+          ProductName=#ProductName#,
+          Productlogic=#Productlogic#,
+          Characteristic=#Characteristic#,
+          Interactive=#Interactive#,
+          DateRep=#DateRep#,
+          OtherRep=#OtherRep#,
+          UpdateAt=#UpdateAt#,
+          UserId=#user.UserId#          
+          WHERE  
+          ProductId=#ProductId#  
+          ]]>
+    </update>
+
+    <!-- resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样 -->
+    <select id="SelectProductByCondition"  parameterClass="Product" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.ProductName
+          ,a.Productlogic
+          ,a.Characteristic
+          ,a.Interactive
+          ,a.DateRep
+          ,a.OtherRep
+          ,a.CreateAt
+          ,a.UpdateAt
+          ,a.UserId
+          ,u.DisplayName
+          FROM Products a left join Users u on a.UserId = u.UserId 
+          ]]>
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="ProductId">
+          <![CDATA[  
+           a.ProductId = #ProductId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="ProductName">
+          <![CDATA[  
+           a.ProductName = #ProductName#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Productlogic">
+          <![CDATA[  
+           a.Productlogic = #Productlogic#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Characteristic">
+          <![CDATA[  
+           a.Characteristic = #Characteristic#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Interactive">
+          <![CDATA[  
+           a.Interactive = #Interactive#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="DateRep">
+          <![CDATA[  
+           a.DateRep = #DateRep#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="user.UserId">
+          <![CDATA[  
+           a.UserId = #User.UserId#
+            ]]>
+        </isNotEmpty>
+        
+      </dynamic>
+    </select>
+    
+  </statements>
+
+</sqlMap>

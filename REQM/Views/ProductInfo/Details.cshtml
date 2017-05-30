@@ -56,7 +56,7 @@
                         <td align="center"><label>创建/修改时间</label></td>
                         <td align="center"><label>创建/修改人</label></td>
                         <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Revision)</td>
-                        <td align="center"><label>操作</label></td>
+                        <td width="120" align="center"><label>操作</label></td>
                     </tr>
 
                     @foreach (var Detaileds in Model.RepDetaileds)
@@ -86,9 +86,9 @@
                             }
                             <td>@Detaileds.Revision</td>
                             <td>
-                                <a href="@Url.Content("~/ProductInfo/Document/"+Detaileds.ProductId)">详情</a> |
+                                <a href="@Url.Content("~/RepDetailed/Details/"+Detaileds.ProductId)">详情</a> |
                                 <a href="@Url.Content("~/RepDetailed/Edit/"+Detaileds.ProductId)">编辑</a> |
-                                <a href="@Url.Content("~/ProductInfo/Document/"+Detaileds.ProductId)">删除</a>
+                                <a href="@Url.Content("~/RepDetailed/Delete/"+Detaileds.ProductId)">删除</a>
                             </td>
                         </tr>
                     }
@@ -176,9 +176,9 @@
                             }
                             <td>@RepOthers.Revision</td>
                             <td>
-                                <a href="@Url.Content("~/ProductInfo/Document/"+RepOthers.RepOtherId)">详情</a> |
-                                <a href="@Url.Content("~/ProductInfo/Document/"+RepOthers.RepOtherId)">编辑</a> |
-                                <a href="@Url.Content("~/ProductInfo/Document/"+RepOthers.RepOtherId)">删除</a>
+                                <a href="@Url.Content("~/RepDetailed/Details/"+RepOthers.RepOtherId)">详情</a> |
+                                <a href="@Url.Content("~/RepDetailed/Edit/"+RepOthers.RepOtherId)">编辑</a> |
+                                <a href="@Url.Content("~/RepDetailed/Delete/"+RepOthers.RepOtherId)">删除</a>
                             </td>
                         </tr>
                     }

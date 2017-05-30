@@ -63,8 +63,8 @@ namespace REQM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RepDetailed RepDetailed = DBCRUD.GetRepDetailedById(Id);
-            return View("Edit", RepDetailed.ToModel());
+            RepDetailed repDetailed = DBCRUD.GetRepDetailedById(Id);
+            return View("Edit", repDetailed.ToModel());
         }
 
         [ValidateInput(false)]
@@ -94,14 +94,18 @@ namespace REQM.Controllers
         /// <param name="id">记录Id</param>
         /// <returns></returns>
         [Authentication]
-        public ActionResult Delete(RepDetailedModel repDetailed)
+        public ActionResult Delete(string Id)
         {
 
-            if (repDetailed.RepDetailedId == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DBCRUD.Delete(repDetailed.RepDetailedId);
+            //获取删除的对象实体
+            RepDetailed repDetailed = DBCRUD.GetRepDetailedById(Id);
+            //删除数据库记录
+            DBCRUD.Delete(Id);
+            //返回上个界面
             return RedirectToAction("Index", "ProductInfo", new { id = repDetailed.ProductId });
         }
     }

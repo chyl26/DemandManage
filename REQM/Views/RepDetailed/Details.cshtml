@@ -1,0 +1,29 @@
+﻿@model RepDetailedModel
+
+@{
+    ViewBag.Title = Model.RepName + "详情";
+}
+<!--内容-->
+<div>
+    <!--详情标题-->
+    <h3>
+        @Html.DisplayFor(m => m.RepName) (优先级别：@Html.DisplayFor(m => m.Priority))
+    </h3>
+    <p classblog-post-meta">@Model.CreateAt &nbsp&nbspby:<a href="#">@Model.DisplayName</a></p>
+    <div>
+        @Html.LabelFor(m => m.RepDescribe)
+        @Html.Raw(HttpUtility.HtmlDecode(@Model.RepDescribe))
+    </div>
+
+    @if (Model.Revision != null)
+    {
+        <hr />
+        @Html.LabelFor(m => m.Revision)
+        <p classblog-post-meta">@Model.UpdateAt &nbsp&nbspby:@Model.DisplayName</p>
+        @Html.Raw(HttpUtility.HtmlDecode(@Model.Revision))
+    }
+
+
+</div>
+
+

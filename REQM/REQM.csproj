@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -190,6 +191,9 @@
     <EmbeddedResource Include="MapFiles\RepDetailed.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\RepInteractive.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InteractiveController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
     <Compile Include="Controllers\RepDetailedController.cs" />
@@ -232,6 +237,7 @@
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\MbRepository.cs" />
+    <Compile Include="Service\InteractiveService.cs" />
     <Compile Include="Service\RepDetailedService.cs" />
     <Compile Include="Service\ProductInfoService.cs" />
     <Compile Include="Service\ProductService.cs" />
@@ -273,6 +279,12 @@
     <Content Include="Views\ProductInfo\Document.cshtml" />
     <Content Include="Views\RepDetailed\Create.cshtml" />
     <Content Include="Views\RepDetailed\Edit.cshtml" />
+    <Content Include="Views\RepDetailed\Details.cshtml" />
+    <None Include="Properties\PublishProfiles\REQM.pubxml" />
+    <Content Include="Views\Interactive\Index.cshtml" />
+    <Content Include="Views\Interactive\Create.cshtml" />
+    <Content Include="Views\Interactive\Edit.cshtml" />
+    <Content Include="Views\Interactive\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

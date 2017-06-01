@@ -57,7 +57,7 @@ namespace REQM.Service
         /// <returns></returns>
         public void Update(RepDetailed repDetailed)
         {
-            repository.Update("UpdateRepDetailedInfo", repDetailed);
+            repository.Update("UpdateRepDetailed", repDetailed);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace REQM.Service
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        public void Delete(string productId)
+        public void Delete(string Id)
         {
-            repository.Delete("DeleteProductInfo", productId);
+            repository.Delete("DeleteRepDetailed", Id);
         }
     }
 }

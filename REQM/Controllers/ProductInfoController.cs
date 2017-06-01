@@ -15,6 +15,7 @@ namespace REQM.Controllers
     {
         private ProductInfoService productInfoCRUD = new ProductInfoService();
         private RepDetailedService repDetailedCRUD = new RepDetailedService();
+        private InteractiveService InteractiveCRUD = new InteractiveService();
 
         // GET: ProductInfo
         [Authentication]
@@ -31,8 +32,15 @@ namespace REQM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ProductInfo product = productInfoCRUD.GetProductById(Id);
+            //获取功能性需求详情List
             product.RepDetaileds = new List<RepDetailed>();
             product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
+            //获取交互需求详情List
+            product.Interactives = new List<RepInteractive>();
+            product.Interactives = InteractiveCRUD.GetRepDetailedsByProductId(Id);
+            //获取数据需求详情List
+
+            //获取非功能性需求详情List
 
             return View(product.ToModel());
         }
@@ -113,6 +121,15 @@ namespace REQM.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ProductInfo product = productInfoCRUD.GetProductById(Id);
+            //获取功能性需求详情List
+            product.RepDetaileds = new List<RepDetailed>();
+            product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
+            //获取交互需求详情List
+
+            //获取数据需求详情List
+
+            //获取非功能性需求详情List
+
             return View(product.ToModel());
         }
     }

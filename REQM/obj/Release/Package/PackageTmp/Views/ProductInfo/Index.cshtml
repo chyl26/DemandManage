@@ -1,0 +1,35 @@
+﻿@model List<ProductInfo>
+
+@{
+    ViewBag.Title = "产品管理列表";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading" align="right">
+        <a class="btn btn-primary" href="@Url.Content("~/ProductInfo/Create")">产品立项</a>
+    </div>
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <tr>
+            <td align="center">@Html.LabelFor(m => m[0].ProductName)</td>
+            <td align="center" width="160">@Html.LabelFor(m => m[0].CreateAt)</td>
+            <td align="center" width="120"><label>创建/修改人</label></td>
+            <td align="center" width="160"><label>操作</label></td>
+        </tr>
+        @foreach (var Product in Model)
+        {
+            <tr>
+                <td align="center"><a href="@Url.Content("~/ProductInfo/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.ProductName)</a></td>
+                <td align="center"><a href="@Url.Content("~/ProductInfo/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.CreateAt)</a></td>
+                <td align="center"><a href="@Url.Content("~/ProductInfo/Details/"+Product.ProductId)">@Html.DisplayFor(m => Product.user.DisplayName)</a></td>
+                <td align="center">
+                    <a href="@Url.Content("~/ProductInfo/Document/"+Product.ProductId)">文档</a> |
+                    <a href="@Url.Content("~/ProductInfo/Details/"+Product.ProductId)">管理</a> |
+                    <a href="@Url.Content("~/ProductInfo/Edit/"+Product.ProductId)">编辑</a> |
+                    <a href="@Url.Content("~/ProductInfo/Delete/"+Product.ProductId)">删除</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+

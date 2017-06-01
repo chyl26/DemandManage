@@ -70,8 +70,8 @@
           ]]>
     </update>
 
-
-    <!--通过ProductId查找功能性需求-->
+    
+    <!--通过条件查找功能性需求-->
     <select id="SelectAllRepDetailed"  parameterClass="RepDetailed" resultMap="SelectAllResult">
       <![CDATA[  
           SELECT a.ProductId
@@ -89,10 +89,19 @@
           ]]>
     </select>
 
+    <!--条件1：通过ProductId查找功能性列表List-->
     <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
     <select id="SelectRepDetailedByProductId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepDetailed">
       <![CDATA[  
            where a.ProductId = #ProductId#  
+          ]]>
+    </select>
+    
+    <!--条件2：通过RepdetailedId查找一个功能性需求-->
+    <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
+    <select id="SelectRepDetailedByRepDetailedId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepDetailed">
+      <![CDATA[  
+           where a.RepDetailedId = #RepDetailedId#  
           ]]>
     </select>
 

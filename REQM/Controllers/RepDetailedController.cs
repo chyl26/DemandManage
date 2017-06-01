@@ -57,6 +57,7 @@ namespace REQM.Controllers
         #endregion
 
         #region 编辑
+        [Authentication]
         public ActionResult Edit(string Id)
         {
             if (Id == null)
@@ -75,13 +76,12 @@ namespace REQM.Controllers
         {
             if (ModelState.IsValid)
             {
-                repDetailed.RepDetailedId = Guid.NewGuid().ToString();
                 repDetailed.UpdateAt = DateTime.Now;
                 string userId = HttpContext.Session["UserId"] as string;
                 repDetailed.Reviser = userId;
                 //将Models类转换成Domain类
                 RepDetailed toEntity = repDetailed.ToEntity();
-                DBCRUD.Create(toEntity);
+                DBCRUD.Update(toEntity);
                 return RedirectToAction("Details", "ProductInfo", new { id = repDetailed.ProductId });
             }
             return View(repDetailed);
@@ -93,6 +93,7 @@ namespace REQM.Controllers
         /// </summary>
         /// <param name="id">记录Id</param>
         /// <returns></returns>
+        
         [Authentication]
         public ActionResult Delete(string Id)
         {
@@ -106,7 +107,19 @@ namespace REQM.Controllers
             //删除数据库记录
             DBCRUD.Delete(Id);
             //返回上个界面
-            return RedirectToAction("Index", "ProductInfo", new { id = repDetailed.ProductId });
+            return RedirectToAction("Details", "ProductInfo", new { id = repDetailed.ProductId });
+        }
+
+
+        [Authentication]
+        public ActionResult Details(string Id)
+        {
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RepDetailed repDetailed = DBCRUD.GetRepDetailedById(Id);
+            return View(repDetailed.ToModel());
         }
     }
 }

@@ -347,6 +347,6 @@ E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Webpages.Deployment.resourc
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Helpers.resources.dll
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Mvc.resources.dll
-E:\projects\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache
 E:\projects\DemandManage\REQM\obj\Debug\REQM.dll
 E:\projects\DemandManage\REQM\obj\Debug\REQM.pdb
+E:\projects\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache

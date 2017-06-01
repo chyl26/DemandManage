@@ -1,0 +1,36 @@
+﻿@model IList<ProductInfoModel>
+@{
+    ViewBag.Title = "产品详情";
+}
+<!-- 教程详情 -->
+<div class="container">
+    <!-- 底部布局 -->
+    <div class="control-label">
+    </div>
+    <div class="container">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">功能操作区</h3>
+                </div>
+                <table class="table table-bordered table-condensed table-hover table-striped">
+                    <tr>
+                        <td align="center">需求名称</td>
+                        <td align="center">优先级</td>
+                        <td align="center">创建时间</td>
+                        <td align="center">作者</td>
+                        <td align="center">操作</td>
+                    </tr>
+                </table>
+                <div class="panel-body">
+                    <button class="btn btn-success" id="Create">创建功能需求</button>
+                    <button class="btn btn-success" id="Create">创建数据需求</button>
+                    <button class="btn btn-success" id="Create">创建交互需求</button>
+                    <button class="btn btn-success" id="Create">创建其它需求</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

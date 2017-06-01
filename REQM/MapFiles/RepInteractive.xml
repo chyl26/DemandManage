@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="RepInteractive" xmlns="http://ibatis.apache.org/mapping"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 设置别名，用于底下指定类型的时候不需要全全类名(包括长的空间名 ),最后一个参数是项目的命名空间名 -->
+  <alias>
+    <typeAlias alias="RepInteractive" type="REQM.Domain.RepInteractive, REQM"/>
+  </alias>
+
+  <!-- 数据库到实体类的映射表 -->
+  <resultMaps>
+
+    <!-- 数据库的全部字段到实体类的映射 -->
+    <resultMap id="SelectAllResult" class="RepInteractive">
+      <result property="ProductId" column="ProductId" dbType="char" type="string" />
+      <result property="InteractiveId" column="InteractiveId" dbType="char" type="string" />
+      <result property="InteractiveName" column="InteractiveName" dbType="varchar" type="string" />
+      <result property="Priority" column="Priority" dbType="varchar" type="string" />
+      <result property="InteractiveDescribe" column="InteractiveDescribe" dbType="mediumtext" type="string" />
+      <result property="CreateAt" column="CreateAt" dbType="DateTime" type="DateTime" />
+      <result property="Reviser" column="Reviser" dbType="varchar" type="string" />
+      <result property="UpdateAt" column="UpdateAt" dbType="DateTime" type="DateTime" />
+      <result property="Revision" column="Revision" dbType="varchar" type="string" />
+      <result property="user.UserId" column="UserId" dbType="char" type="string" />
+      <result property="user.DisplayName" column="DisplayName" dbType="varchar" type="string" />
+    </resultMap>
+
+
+    <!-- 这里可以配置其它只需要指定字段的映射文件(这里是不返回ID) -->
+  </resultMaps>
+
+  <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
+  <!-- 为了避免SQL语句出现的'<'和'>'会和配置文件的<>冲突，所以SQL语句都写在<![CDATA[  与  ]]>之间 -->
+  <statements>
+
+    <!-- 添加句子SQL语句 -->
+    <insert id="InsertRepInteractive" parameterClass="RepInteractive" >
+      <![CDATA[  
+      insert into RepInteractives  
+      (ProductId,InteractiveId,InteractiveName,Priority,InteractiveDescribe,CreateAt,Reviser,UpdateAt,Revision,UserId)  
+      values  
+      (#ProductId#,#InteractiveId#,#InteractiveName#,#Priority#,#InteractiveDescribe#,#CreateAt#,#Reviser#,#UpdateAt#,#Revision#,#user.UserId#)  
+      ]]>
+    </insert>
+
+    <!-- parameterClass表示传入的参数为int -->
+    <delete id="DeleteRepInteractive" parameterClass="RepInteractive">
+      <![CDATA[
+          delete from RepInteractives  
+          where  
+          InteractiveId = #InteractiveId#
+          ]]>
+    </delete>
+
+    <!-- #UserName# 表示传入实体类参数的属性，表示实体的的属性 -->
+    <update id="UpdateRepInteractive" parameterClass="RepInteractive">
+      <![CDATA[  
+          UPDATE RepInteractives SET  
+          ProductId=#ProductId#,
+          InteractiveName=#InteractiveName#,
+          Priority=#Priority#,
+          InteractiveDescribe=#InteractiveDescribe#,
+          CreateAt=#CreateAt#,
+          Reviser=#Reviser#,
+          UpdateAt=#UpdateAt#,
+          Revision=#Revision#,
+          UserId=#user.UserId#
+          WHERE  
+          InteractiveId=#InteractiveId#  
+          ]]>
+    </update>
+
+    
+    <!--通过条件查找功能性需求-->
+    <select id="SelectAllRepInteractive"  parameterClass="RepInteractive" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.InteractiveId
+          ,a.InteractiveName
+          ,a.Priority
+          ,a.InteractiveDescribe
+          ,a.CreateAt
+          ,a.Reviser
+          ,a.UpdateAt
+          ,a.Revision
+          ,a.UserId
+          ,u.DisplayName
+          FROM RepInteractives a left join Users u on a.UserId = u.UserId
+          ]]>
+    </select>
+
+    <!--条件1：通过ProductId查找功能性列表List-->
+    <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
+    <select id="SelectRepInteractiveByProductId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
+      <![CDATA[  
+           where a.ProductId = #ProductId#  
+          ]]>
+    </select>
+    
+    <!--条件2：通过RepdetailedId查找一个功能性需求-->
+    <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
+    <select id="SelectRepInteractiveByInteractiveId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
+      <![CDATA[  
+           where a.InteractiveId = #InteractiveId#  
+          ]]>
+    </select>
+
+
+    <!-- resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样 -->
+    <select id="SelectInteractiveByCondition"  parameterClass="RepInteractive" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.InteractiveId
+          ,a.InteractiveName
+          ,a.Priority
+          ,a.RepDescribe
+          ,a.CreateAt
+          ,a.Reviser
+          ,a.UpdateAt
+          ,a.Revision
+          ,a.UserId
+          ,u.DisplayName
+          FROM RepInteractives a left join Users u on a.UserId = u.UserId left join ProductInfos p on a.ProductId = p.ProductId
+          ]]>
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="ProductId">
+          <![CDATA[  
+           a.ProductId = #ProductId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RepDetailedId">
+          <![CDATA[  
+           a.InteractiveId = #InteractiveId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Priority">
+          <![CDATA[  
+           a.Priority = #Priority#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RepDescribe">
+          <![CDATA[  
+           a.InteractiveName = #InteractiveName#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CreateAt">
+          <![CDATA[  
+           a.CreateAt = #CreateAt#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Reviser">
+          <![CDATA[  
+           a.Reviser = #Reviser#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UpdateAt">
+          <![CDATA[  
+           a.UpdateAt = #UpdateAt#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Revision">
+          <![CDATA[  
+           a.Revision = #Revision#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="user.UserId">
+          <![CDATA[  
+           a.UserId = #User.UserId#
+            ]]>
+        </isNotEmpty>
+
+      </dynamic>
+    </select>
+
+  </statements>
+
+</sqlMap>

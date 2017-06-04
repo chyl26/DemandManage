@@ -117,14 +117,16 @@ CREATE TABLE `repdetaileds` (
 -- ----------------------------
 DROP TABLE IF EXISTS `repinteractives`;
 CREATE TABLE `repinteractives` (
-  `InteractiveId` char(35) NOT NULL,
-  `InteractiveName` varchar(0) DEFAULT NULL,
+  `InteractiveId` char(36) NOT NULL,
+  `InteractiveName` varchar(255) DEFAULT NULL,
+  `Priority` varchar(255) DEFAULT NULL,
   `InteractiveDescribe` mediumtext,
   `CreateAt` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `Reviser` varchar(255) DEFAULT NULL,
   `UpdateAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `Revision` varchar(255) DEFAULT NULL,
   `UserId` char(255) NOT NULL,
-  `ProductId` mediumtext NOT NULL,
+  `ProductId` char(36) NOT NULL,
   PRIMARY KEY (`InteractiveId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 

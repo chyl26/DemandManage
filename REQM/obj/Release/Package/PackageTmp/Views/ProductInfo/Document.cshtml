@@ -31,17 +31,13 @@
                         <h2>@Detaileds.RepName 优先级：@Detaileds.Priority</h2>
                         <p>@Detaileds.user.DisplayName by @Detaileds.CreateAt</p>
                         @Html.LabelFor(m => m.RepDetaileds)
-                        <pre>
-                            <!--将Html转换成文本输出-->
-                            @Html.Raw(HttpUtility.HtmlDecode(Detaileds.RepDescribe))
-                        </pre>
+                        <!--将Html转换成文本输出-->
+                        <pre>@Html.Raw(HttpUtility.HtmlDecode(Detaileds.RepDescribe))</pre>
+
                         if (Detaileds.Revision != null)
                         {
                             <label>修订记录</label>
                             <p>@Detaileds.Reviser by @Detaileds.UpdateAt</p>
-                            <div class="label-info">
-                                @Detaileds.Revision
-                            </div>
                             <pre>@Detaileds.Revision</pre>
                         }
                     }

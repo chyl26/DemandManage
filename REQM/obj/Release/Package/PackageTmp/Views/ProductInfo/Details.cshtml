@@ -40,13 +40,13 @@
             <div class="panel">
                 <div class="panel-heading">
                     <div align="center">
-                        <button class="btn btn-primary" id="NewProduct">1-创建产品逻辑说明</button> |
+                        <A class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">1-创建产品逻辑说明</A> |
                         <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">2-创建功能需求描述</a> |
-                        <button class="btn btn-primary" id="NewProduct">3-创建交互需求描述</button> |
-                        <button class="btn btn-info" id="NewProduct">4-创建数据需求描述</button> |
-                        <button class="btn btn-primary" id="NewProduct">5-创建其它需求描述</button> |
-                        <button class="btn btn-info" id="NewProduct">6-创建运营方案</button> |
-                        <button class="btn btn-primary" id="NewProduct">7-创建客服文档</button>
+                        <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/Interactive/Create/"+Model.ProductId)">3-创建交互需求描述</a> |
+                        <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">4-创建数据需求描述</a> |
+                        <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">5-创建其它需求描述</a> |
+                        <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">6-创建运营方案</a> |
+                        <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">7-创建客服文档</a>
                     </div>
                 </div>
                 <table class="table table-bordered table-condensed table-hover table-striped">
@@ -59,7 +59,7 @@
                         <td width="120" align="center"><label>操作</label></td>
                     </tr>
                     <tr>
-                        <td>@Html.LabelFor(Model=>Model.RepDetaileds)</td>
+                        <td>@Html.LabelFor(Model => Model.RepDetaileds)</td>
                     </tr>
                     @foreach (var Detaileds in Model.RepDetaileds)
                     {
@@ -70,13 +70,13 @@
                         <tr>
                             <td>@Detaileds.RepName</td>
                             <td>@Detaileds.Priority</td>
-                            @if (Detaileds.UpdateAt == null)
-                    {
-                                <td>@Detaileds.CreateAt</td>
+                            @if (Detaileds.UpdateAt != DateTime.MinValue)
+                            {
+                                <td>@Detaileds.UpdateAt</td>
                             }
                             else
                             {
-                                <td>@Detaileds.UpdateAt</td>
+                                <td>@Detaileds.CreateAt</td>
                             }
                             @if (Detaileds.Revision == null)
                     {
@@ -95,34 +95,41 @@
                         </tr>
                     }
                     <!--交互需求详情-->
+                    <tr>
+                        <td>@Html.LabelFor(Model => Model.Interactives)</td>
+                    </tr>
                     @foreach (var Interactives in Model.Interactives)
                     {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => Interactives.InteractiveId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
                         <tr>
                             <td>@Interactives.InteractiveName</td>
-                            <td>@Interactives.Priority</td>
-                            @if (Interactives.UpdateAt == null)
-                    {
-                                <td>@Interactives.CreateAt</td>
-                            }
-                            else
-                            {
-                                <td>@Interactives.UpdateAt</td>
-                            }
-                            @if (Interactives.Revision == null)
-                    {
-                                <td>@Interactives.user.DisplayName</td>
-                            }
-                            else
-                            {
-                                <td>@Interactives.Reviser</td>
-                            }
-                            <td>@Interactives.Revision</td>
-                            <td>
-                                <a href="@Url.Content("~/ProductInfo/Document/"+Interactives.InteractiveId)">详情</a> |
-                                <a href="@Url.Content("~/ProductInfo/Document/"+Interactives.InteractiveId)">编辑</a> |
-                                <a href="@Url.Content("~/ProductInfo/Document/"+Interactives.InteractiveId)">删除</a>
-                            </td>
-                        </tr>
+                                <td>@Interactives.Priority</td>
+                                @if (Interactives.UpdateAt == null)
+                                {
+                                    <td>@Interactives.CreateAt</td>
+                                }
+                                else
+                                {
+                                    <td>@Interactives.UpdateAt</td>
+                                }
+                                @if (Interactives.Revision == null)
+                                {
+                                    <td>@Interactives.user.DisplayName</td>
+                                }
+                                else
+                                {
+                                    <td>@Interactives.Reviser</td>
+                                }
+                                <td>@Interactives.Revision</td>
+                                <td>
+                                    <a href="@Url.Content("~/RepDetailed/Details/"+Interactives.InteractiveId)">详情</a> |
+                                    <a href="@Url.Content("~/RepDetailed/Edit/"+Interactives.InteractiveId)">编辑</a> |
+                                    <a href="@Url.Content("~/RepDetailed/Delete/"+Interactives.InteractiveId)">删除</a>
+                                </td>
+                            </tr>
                     }
                     <!--数据需求详情-->
                     @foreach (var datas in Model.Datas)

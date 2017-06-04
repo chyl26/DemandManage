@@ -30,7 +30,7 @@ namespace REQM.Service
         /// 获取所有
         /// </summary>
         /// <returns></returns>
-        public IList<RepInteractive> GetRepDetaileds()
+        public IList<RepInteractive> GetInteractives()
         {
             IList<RepInteractive> interactiveList = repository.GetList("SelectInteractiveByCondition", null);
             return interactiveList;
@@ -40,7 +40,7 @@ namespace REQM.Service
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        public IList<RepInteractive> GetRepDetailedsByProductId(string Id)
+        public IList<RepInteractive> GetInteractivesByProductId(string Id)
         {
             IList<RepInteractive> repDetailedList = repository.GetList("SelectRepInteractiveByProductId", new RepInteractive { InteractiveId = Id });
             return repDetailedList;

@@ -74,7 +74,7 @@ namespace REQM.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!userCRUD.VerifyUser(user.UserName))//判断用户名是否存在
+                if (userCRUD.VerifyUser(user.UserName))//判断用户名是否存在
                 {
                     user.UserId = Guid.NewGuid().ToString();
                     user.PasswordHash = PasswordHelper.GetMd5HashStr(user.PasswordHash);

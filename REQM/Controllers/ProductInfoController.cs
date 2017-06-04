@@ -37,7 +37,7 @@ namespace REQM.Controllers
             product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
             //获取交互需求详情List
             product.Interactives = new List<RepInteractive>();
-            product.Interactives = InteractiveCRUD.GetRepDetailedsByProductId(Id);
+            product.Interactives = InteractiveCRUD.GetInteractivesByProductId(Id);
             //获取数据需求详情List
 
             //获取非功能性需求详情List

@@ -121,5 +121,39 @@ namespace REQM.Controllers
             RepDetailed repDetailed = DBCRUD.GetRepDetailedById(Id);
             return View(repDetailed.ToModel());
         }
+
+
+        #region  测试
+
+        public ActionResult Summernote(string Id)
+        {
+            //将ProductId通过model传到前端
+            RepDetailedModel model = new RepDetailedModel();
+            model.ProductId = Id;
+            //返回功能性需求Model
+            return View(model);
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Summernote(RepDetailedModel repDetailed)
+        {
+            if (ModelState.IsValid)
+            {
+                repDetailed.RepDetailedId = Guid.NewGuid().ToString();
+                repDetailed.CreateAt = DateTime.Now;
+                string userId = HttpContext.Session["UserId"] as string;
+                repDetailed.UserId = userId;
+                //将Models类转换成Domain类
+                RepDetailed toEntity = repDetailed.ToEntity();
+                DBCRUD.Create(toEntity);
+                return RedirectToAction("Details", "ProductInfo", new { id = repDetailed.ProductId });
+            }
+            return View(repDetailed);
+        }
+        #endregion
+
     }
 }

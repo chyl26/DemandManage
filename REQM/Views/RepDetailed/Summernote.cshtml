@@ -1,0 +1,83 @@
+﻿@model RepDetailedModel
+
+@{
+    ViewBag.Title = "Summernote";
+}
+
+<div id="summernote">这是Summernote富文本框</div>
+
+
+@*<script type="text/javascript">
+    //加载编辑器
+    $(document).ready(function () {
+        $("#summernote").summernote({
+            height: 400,
+            minHeight: 300,
+            maxHeight: 500,
+            focus: true,
+            lang: "zh-CN",
+            //重写图片上传
+            onImageUpload: function (files, editor, $editable) {
+                sendFile(files[0], editor, $editable);
+            }
+        });
+    });
+    //图片上传
+    function sendFile(file, editor, $editable) {
+        var filename = false;
+        try{
+            filename=false['name'];
+        } catch (e) {
+            filename = false;
+        }
+        if (!filename) {
+            $(".note-alarm").remove();
+        }
+
+        //以上防止在编辑器内拖拽引发第二次上传导致的提示错误
+        data = new FormData();
+        data.append("file", "file");
+        data.append("key", "filename");//唯一性参数
+
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "",
+            cache: false,
+            contentType: false,
+            success: function (url) {
+                if (url == '200') {
+                    alert("上传失败！")
+                    return;
+                } else {
+                    alert("上传成功！")
+                }
+                //alert(url);
+                editor.insertImage($editable, url)
+                //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+            },
+            error: function () {
+                alert("上传失败！");
+                return;
+                //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+            }
+        });
+    }
+
+    //var encodevalue = $("#RepDescribe").val();
+    ////var decodevalue = htmlDecode(encodevalue);
+    //$("#summernote").summernote('code', encodevalue);
+
+    ////给编辑器赋值
+    //var makrup = $('#summernote').summernote('code');
+    ////var encodevalue = htmlEncode(makrup);
+    //$("#RepDescribe").val(makrup);
+</script>*@
+
+<script>
+    $(document).ready(function () {
+        $('.summernote').summernote();
+    })
+</script>
+
+

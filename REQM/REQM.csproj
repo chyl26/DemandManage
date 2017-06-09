@@ -291,6 +291,7 @@
     <Content Include="Views\Interactive\Create.cshtml" />
     <Content Include="Views\Interactive\Edit.cshtml" />
     <Content Include="Views\Interactive\Details.cshtml" />
+    <Content Include="Views\RepDetailed\Summernote.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

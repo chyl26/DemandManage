@@ -136,6 +136,7 @@ E:\projects\DemandManage\REQMTest\bin\Debug\AutoMapper.xml
 E:\projects\DemandManage\REQMTest\bin\Debug\System.Web.WebPages.xml
 E:\projects\DemandManage\REQMTest\bin\Debug\System.Web.WebPages.Razor.xml
 E:\projects\DemandManage\REQMTest\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\projects\DemandManage\REQMTest\bin\Debug\zh-Hans\System.Web.Razor.resources.dll
 E:\projects\DemandManage\REQMTest\bin\Debug\zh-Hans\System.Web.Mvc.resources.dll
 E:\projects\DemandManage\REQMTest\bin\Debug\zh-Hans\System.Web.WebPages.resources.dll
 E:\projects\DemandManage\REQMTest\bin\Debug\zh-Hans\System.Web.WebPages.Razor.resources.dll

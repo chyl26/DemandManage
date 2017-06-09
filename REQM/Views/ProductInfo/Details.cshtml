@@ -197,26 +197,3 @@
         </div>
     </div>
 }
-
-
-<!--利用Script实现界面跳转-->
-<script>
-    $(function () {
-        $("#Details").click(function () {
-            location.href = "@Url.Content("~/RepDetailed/Detils")";
-        })
-    })
-
-    $(function () {
-        $("#Edit").click(function () {
-            location.href = "@Url.Content("~/RepDetailed/Edit")";
-        })
-    })
-
-    $(function () {
-        $("#Delete").click(function () {
-            location.href = "@Url.Content("~/RepDetailed/Delete")";
-        })
-    })
-
-</script>

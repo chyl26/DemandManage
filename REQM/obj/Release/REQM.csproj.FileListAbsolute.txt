@@ -42,8 +42,6 @@ E:\projects\DemandManage\REQM\bin\System.Web.Razor.dll
 E:\projects\DemandManage\REQM\bin\System.Web.Webpages.Deployment.dll
 E:\projects\DemandManage\REQM\bin\System.Web.Webpages.dll
 E:\projects\DemandManage\REQM\bin\System.Web.Webpages.Razor.dll
-E:\projects\DemandManage\REQM\bin\WebMatrix.WebData.dll
-E:\projects\DemandManage\REQM\bin\WebMatrix.Data.dll
 E:\projects\DemandManage\REQM\bin\AutoMapper.xml
 E:\projects\DemandManage\REQM\bin\Microsoft.AI.DependencyCollector.xml
 E:\projects\DemandManage\REQM\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -59,8 +57,6 @@ E:\projects\DemandManage\REQM\bin\System.Web.Webpages.Deployment.xml
 E:\projects\DemandManage\REQM\bin\System.Web.Webpages.Razor.xml
 E:\projects\DemandManage\REQM\bin\System.Web.Helpers.xml
 E:\projects\DemandManage\REQM\bin\System.Web.Mvc.xml
-E:\projects\DemandManage\REQM\bin\WebMatrix.WebData.xml
-E:\projects\DemandManage\REQM\bin\WebMatrix.Data.xml
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Razor.resources.dll
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Webpages.resources.dll
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll

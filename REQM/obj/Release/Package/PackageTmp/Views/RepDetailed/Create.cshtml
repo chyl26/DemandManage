@@ -51,7 +51,9 @@
 @section scripts{
     <!-- 内部javascript -->
     <script>
+
         $(document).ready(function () {
+
             var placeholder = $("#summernote").attr("placeholder") || '';//设置输入提示
             var url = $("#summernote").attr("action") || '';//设置上传图片的url
             $("#summernote").summernote({
@@ -93,7 +95,7 @@
             });
 
             //初始化summernote的值
-            var encodevalue = $("#Productlogic").val();
+            var encodevalue = $("#RepDescribe").val();
             //var decodevalue = htmlDecode(encodevalue);
             $('#summernote').summernote('code', encodevalue);
 
@@ -103,7 +105,7 @@
         $("form").submit(function (e) {
             var makrup = $("#summernote").summernote('code');
 
-            //将文档编辑器的内容赋给要存储的属性（如Productlogic）
+            //var encodevalue = htmlEncode(makrup);
             $("#RepDescribe").val(makrup);
         });
 

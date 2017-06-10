@@ -93,7 +93,6 @@ namespace REQM.Controllers
         [Authentication]
         public ActionResult Delete(string Id)
         {
-
             if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

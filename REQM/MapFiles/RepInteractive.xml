@@ -90,8 +90,8 @@
     </select>
 
     <!--条件1：通过ProductId查找功能性列表List-->
-    <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
-    <select id="SelectRepInteractiveByProductId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
+    <!-- #value# 是点位符会被传入的parameterClass参数类型，要与传入的参数一致 -->
+    <select id="SelectRepInteractiveByProductId" parameterClass="RepInteractive" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
       <![CDATA[  
            where a.ProductId = #ProductId#  
           ]]>
@@ -99,7 +99,7 @@
     
     <!--条件2：通过RepdetailedId查找一个功能性需求-->
     <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
-    <select id="SelectRepInteractiveByInteractiveId" parameterClass="string" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
+    <select id="SelectRepInteractiveByInteractiveId" parameterClass="RepInteractive" resultMap="SelectAllResult" extends="SelectAllRepInteractive">
       <![CDATA[  
            where a.InteractiveId = #InteractiveId#  
           ]]>

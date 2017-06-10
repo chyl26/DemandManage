@@ -125,6 +125,8 @@ namespace REQM.Controllers
             product.RepDetaileds = new List<RepDetailed>();
             product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
             //获取交互需求详情List
+            product.Interactives = new List<RepInteractive>();
+            product.Interactives = InteractiveCRUD.GetInteractivesByProductId(Id);
 
             //获取数据需求详情List
 

@@ -22,7 +22,7 @@ namespace REQM.Service
         /// <returns></returns>
         public RepInteractive GetRepInteractiveById(string interactiveId)
         {
-            RepInteractive repInteractive = repository.GetByCondition("SelectRepInteractiveByrepInteractiveId", new RepInteractive { InteractiveId = interactiveId });
+            RepInteractive repInteractive = repository.GetByCondition("SelectRepInteractiveByInteractiveId", new RepInteractive { InteractiveId = interactiveId });
             return repInteractive;
         }
 
@@ -42,12 +42,12 @@ namespace REQM.Service
         /// <returns></returns>
         public IList<RepInteractive> GetInteractivesByProductId(string Id)
         {
-            IList<RepInteractive> repDetailedList = repository.GetList("SelectRepInteractiveByProductId", new RepInteractive { InteractiveId = Id });
+            IList<RepInteractive> repDetailedList = repository.GetList("SelectRepInteractiveByProductId", new RepInteractive { ProductId = Id });//new RepInteractive 创建一个实体的Id
             return repDetailedList;
         }
 
         /// <summary>
-        /// 通过Id更新产品信息
+        /// 通过Id更新信息
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>

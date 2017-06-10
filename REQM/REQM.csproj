@@ -185,6 +185,8 @@
     <Content Include="Content\scripts\respond.js" />
     <Content Include="Content\scripts\respond.min.js" />
     <None Include="Content\scripts\_references.js" />
+    <Content Include="Content\scripts\summernote.css" />
+    <Content Include="Content\scripts\summernote.js" />
     <Content Include="Global.asax" />
     <EmbeddedResource Include="MapFiles\User.xml" />
     <EmbeddedResource Include="MapFiles\Product.xml">

@@ -65,3 +65,4 @@ E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Helpers.resources.dll
 E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Mvc.resources.dll
 E:\projects\DemandManage\REQM\obj\Release\REQM.dll
 E:\projects\DemandManage\REQM\obj\Release\REQM.pdb
+E:\projects\DemandManage\REQM\obj\Release\REQM.csprojResolveAssemblyReference.cache

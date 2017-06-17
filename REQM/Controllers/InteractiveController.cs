@@ -18,7 +18,7 @@ namespace REQM.Controllers
         // GET: Interactive
         public ActionResult Index()
         {
-            return View();
+            return View(DBCRUD.GetInteractives());
         }
         #region  创建
         [Authentication]

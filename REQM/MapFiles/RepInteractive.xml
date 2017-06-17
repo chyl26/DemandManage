@@ -113,7 +113,7 @@
           ,a.InteractiveId
           ,a.InteractiveName
           ,a.Priority
-          ,a.RepDescribe
+          ,a.InteractiveDescribe
           ,a.CreateAt
           ,a.Reviser
           ,a.UpdateAt

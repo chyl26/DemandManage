@@ -21,7 +21,7 @@ namespace REQM.Controllers
         [Authentication]
         public ActionResult Index()
         {
-            return View();
+            return View(DBCRUD.GetRepDetaileds());
         }
 
         #region  创建

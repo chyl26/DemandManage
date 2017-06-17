@@ -8,76 +8,191 @@
 
 
 @*<script type="text/javascript">
-    //加载编辑器
+        //加载编辑器
+        $(document).ready(function () {
+            $("#summernote").summernote({
+                height: 400,
+                minHeight: 300,
+                maxHeight: 500,
+                focus: true,
+                lang: "zh-CN",
+                //重写图片上传
+                onImageUpload: function (files, editor, $editable) {
+                    sendFile(files[0], editor, $editable);
+                }
+            });
+        });
+        //图片上传
+        function sendFile(file, editor, $editable) {
+            var filename = false;
+            try{
+                filename=false['name'];
+            } catch (e) {
+                filename = false;
+            }
+            if (!filename) {
+                $(".note-alarm").remove();
+            }
+
+            //以上防止在编辑器内拖拽引发第二次上传导致的提示错误
+            data = new FormData();
+            data.append("file", "file");
+            data.append("key", "filename");//唯一性参数
+
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "",
+                cache: false,
+                contentType: false,
+                success: function (url) {
+                    if (url == '200') {
+                        alert("上传失败！")
+                        return;
+                    } else {
+                        alert("上传成功！")
+                    }
+                    //alert(url);
+                    editor.insertImage($editable, url)
+                    //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+                },
+                error: function () {
+                    alert("上传失败！");
+                    return;
+                    //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+                }
+            });
+        }
+
+        //var encodevalue = $("#RepDescribe").val();
+        ////var decodevalue = htmlDecode(encodevalue);
+        //$("#summernote").summernote('code', encodevalue);
+
+        ////给编辑器赋值
+        //var makrup = $('#summernote').summernote('code');
+        ////var encodevalue = htmlEncode(makrup);
+        //$("#RepDescribe").val(makrup);
+    </script>*@
+
+@*<script>
     $(document).ready(function () {
-        $("#summernote").summernote({
-            height: 400,
-            minHeight: 300,
-            maxHeight: 500,
+        $('.summernote').summernote();
+    })
+</script>*@
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        /* function sendFile(file, editor,welEditable) {
+         console.log("file="+file);
+         console.log("editor="+editor);
+         console.log("welEditable="+welEditable);
+          data = new FormData();
+          data.append("blog_image[image]", file);
+          $.ajax({
+           url: 'blog_images.jsp',
+           data: data,
+           cache: false,
+           contentType: false,
+           processData: false,
+           type: 'POST',
+           success: function(data){
+            editor.insertImage(welEditable, data.url);
+           }
+          });
+         }
+        */
+        $('#summernote').summernote({
+            height: 300, /*高さを指定*/
+            lang: 'zh-CN', // default: 'en-US'
             focus: true,
-            lang: "zh-CN",
-            //重写图片上传
+            toolbar: [
+             ['style', ['bold', 'italic', 'underline', 'clear']],
+             ['fontsize', ['fontsize']],
+             ['color', ['color']],
+             ['para', ['ul', 'ol', 'paragraph']],
+             ['height', ['height']],
+             ['insert', ['picture', 'video']]
+            ],
+            /* image: {
+
+                selectFromFiles: '选择文件'
+
+               }, */
+            /*onImageUpload: function(files, editor, welEditable) {
+              sendFile(files[0], editor,welEditable);
+            }*/
             onImageUpload: function (files, editor, $editable) {
                 sendFile(files[0], editor, $editable);
             }
+
+
         });
     });
-    //图片上传
-    function sendFile(file, editor, $editable) {
-        var filename = false;
-        try{
-            filename=false['name'];
-        } catch (e) {
-            filename = false;
-        }
-        if (!filename) {
-            $(".note-alarm").remove();
-        }
 
-        //以上防止在编辑器内拖拽引发第二次上传导致的提示错误
+
+    function sendFile(file, editor, $editable) {
+        $(".note-toolbar.btn-toolbar").append('正在上传图片');
+        var filename = false;
+        try {
+            filename = file['name'];
+            alert(filename);
+        } catch (e) { filename = false; }
+        if (!filename) { $(".note-alarm").remove(); }
+        //以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
+        var ext = filename.substr(filename.lastIndexOf("."));
+        ext = ext.toUpperCase();
+        var timestamp = new Date().getTime();
+        var name = timestamp + "_" + $("#summernote").attr('aid') + ext;
+        //name是文件名，自己随意定义，aid是我自己增加的属性用于区分文件用户
         data = new FormData();
-        data.append("file", "file");
-        data.append("key", "filename");//唯一性参数
+        data.append("file", file);
+        data.append("key", name);
+        data.append("token", $("#summernote").attr('token'));
 
         $.ajax({
             data: data,
             type: "POST",
-            url: "",
+            url: "/summernote/fileupload", //图片上传出来的url，返回的是图片上传后的路径，http格式
+            contentType: "json",
             cache: false,
-            contentType: false,
-            success: function (url) {
-                if (url == '200') {
-                    alert("上传失败！")
-                    return;
-                } else {
-                    alert("上传成功！")
-                }
-                //alert(url);
-                editor.insertImage($editable, url)
-                //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+            processData: false,
+            success: function (data) {
+                //data是返回的hash,key之类的值，key是定义的文件名
+                alert(data);
+                //把图片放到编辑框中。editor.insertImage 是参数，写死。后面的http是网上的图片资源路径。
+                //网上很多就是这一步出错。
+                $('#summernote').summernote('editor.insertImage', "http://res.cloudinary.com/demo/image/upload/butterfly.jpg");
+
+                $(".note-alarm").html("上传成功,请等待加载");
+                setTimeout(function () { $(".note-alarm").remove(); }, 3000);
             },
             error: function () {
-                alert("上传失败！");
-                return;
-                //setTimeout(funtion(){$(".note-alarm").remove();},3000);
+                $(".note-alarm").html("上传失败");
+                setTimeout(function () { $(".note-alarm").remove(); }, 3000);
             }
         });
     }
 
-    //var encodevalue = $("#RepDescribe").val();
-    ////var decodevalue = htmlDecode(encodevalue);
-    //$("#summernote").summernote('code', encodevalue);
-
-    ////给编辑器赋值
-    //var makrup = $('#summernote').summernote('code');
-    ////var encodevalue = htmlEncode(makrup);
-    //$("#RepDescribe").val(makrup);
-</script>*@
-
-<script>
-    $(document).ready(function () {
-        $('.summernote').summernote();
-    })
 </script>
 
+<script>
+    var HelloButton = function (context) {
+        var ui = $.summernote.ui;
+
+        // create button
+        var button = ui.button({
+            contents: '<i class="fa fa-child" /> Hello',
+            tooltip: 'hello',
+            click: function () {
+                // invoke insertText method with 'hello' on editor module.
+                context.invoke('editor.insertText', 'hello');
+            }
+        });
+
+        return button.render();   // return button as jquery object
+    }
+</script>
 

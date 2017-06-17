@@ -2,50 +2,80 @@
 
 @{
     ViewBag.Title = "创建交互需求";
+    Layout = "../Shared/_LayoutAdminLTE.cshtml";
 }
 
-@using (Html.BeginForm("Create", "Interactive", FormMethod.Post, new { @class = "form-horizontal" }))
+<head>
+    <!--summernote-->
+    <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
+    <script src="~/Content/summernote/summernote.js"></script>
+    <script src="~/Content/summernote/summernote-zh-CN.js"></script>
+</head>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!-- 内容标题 -->
+    <section class="content-header">
+        <h1>
+            创建交互需求
+            <small>产品管理</small>
+        </h1>
+        <!--  导航地图  -->
+        <ol class="breadcrumb">
+            <li><a href="~/Product/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">产品管理</li>
+        </ol>
+    </section>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.InteractiveName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.InteractiveName, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入交互需求名称" } })
-            @Html.ValidationMessageFor(m => m.InteractiveName, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <!-- 内容Panel -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            @*<div class="box-header with-border">
+                    <h3 class="box-title">创建新产品</h3>
+                </div>*@
+            <div class="box-body">
+                <!--  这是写入要展示的内容  -->
+                <div class="form-group">
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Priority, new { htmlAttributes = new { @class = "form-control", placeholder = "优先级" } })
-            @Html.ValidationMessageFor(m => m.Priority, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @Html.HiddenFor(Model => Model.ProductId)
-    @Html.HiddenFor(Model => Model.InteractiveDescribe)
-    <div class="form-group">
-        @Html.LabelFor(m => m.InteractiveDescribe, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div id="summernote" placeholder="请输入产品交互需求"></div>
-            @Html.ValidationMessageFor(m => m.InteractiveDescribe, "", new { @class = "text-danger" })
-        </div>
-    </div>
+                    @Html.EditorFor(m => m.InteractiveName, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入交互需求名称" } })
+                    @Html.ValidationMessageFor(m => m.InteractiveName, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Revision, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Revision, new { @class = "form-control", rows = 5, placeholder = "请输入修改记录" })
-            @Html.ValidationMessageFor(m => m.Revision, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="col-md-2"></div>
-    <div class="col col-md-10">
-        <button type="submit" class="btn btn-primary btn-block" id="btnRegister">保存</button>
-    </div>
+                </div>
 
+                <div class="form-group">
+
+                    @Html.EditorFor(m => m.Priority, new { htmlAttributes = new { @class = "form-control", placeholder = "优先级" } })
+                    @Html.ValidationMessageFor(m => m.Priority, "", new { @class = "text-danger" })
+
+                </div>
+                @Html.HiddenFor(Model => Model.ProductId)
+                @Html.HiddenFor(Model => Model.InteractiveDescribe)
+                <div class="form-group">
+
+                    <div id="summernote" placeholder="请输入产品交互需求"></div>
+                    @Html.ValidationMessageFor(m => m.InteractiveDescribe, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+
+                    @Html.TextAreaFor(m => m.Revision, new { @class = "form-control", rows = 5, placeholder = "请输入修改记录" })
+                    @Html.ValidationMessageFor(m => m.Revision, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block" id="btnRegister">保存</button>
+                </div>
+                <!--  这是写入要展示的内容  -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
 }
 
 @section scripts{

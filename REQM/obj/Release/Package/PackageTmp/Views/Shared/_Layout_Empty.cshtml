@@ -16,18 +16,14 @@
 </head>
 
 <body class="container">
-    <h2 class="page-header">@ViewBag.Title</h2>
-    <section>
 
         @RenderBody()
 
         <footer>
             <hr />
-            <p align="center">&copy;@DateTime.Now.Year 版权所有人陈永亮</p>
+            <p align="center">&copy;@DateTime.Now.Year 版权所有 陈永亮</p>
         </footer>
 
-
-    </section>
 
     @RenderSection("scripts", required: false)
 

@@ -66,3 +66,10 @@ E:\projects\DemandManage\REQM\bin\zh-Hans\System.Web.Mvc.resources.dll
 E:\projects\DemandManage\REQM\obj\Release\REQM.dll
 E:\projects\DemandManage\REQM\obj\Release\REQM.pdb
 E:\projects\DemandManage\REQM\obj\Release\REQM.csprojResolveAssemblyReference.cache
+E:\projects\DemandManage\REQM\bin\Antlr3.Runtime.dll
+E:\projects\DemandManage\REQM\bin\Newtonsoft.Json.dll
+E:\projects\DemandManage\REQM\bin\System.Web.Optimization.dll
+E:\projects\DemandManage\REQM\bin\WebGrease.dll
+E:\projects\DemandManage\REQM\bin\Antlr3.Runtime.pdb
+E:\projects\DemandManage\REQM\bin\Newtonsoft.Json.xml
+E:\projects\DemandManage\REQM\bin\System.Web.Optimization.xml

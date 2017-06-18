@@ -232,6 +232,12 @@
     <EmbeddedResource Include="MapFiles\RepInteractive.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\RepData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\RepOther.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -242,9 +248,12 @@
     <Compile Include="Controllers\InteractiveController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
+    <Compile Include="Controllers\RepDataController.cs" />
     <Compile Include="Controllers\RepDetailedController.cs" />
+    <Compile Include="Controllers\RepOtherController.cs" />
     <Compile Include="Domain\Product\HelpDoc.cs" />
     <Compile Include="Domain\Note.cs" />
+    <Compile Include="Domain\Product\Logic.cs" />
     <Compile Include="Domain\Product\OperatingDoc.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\Product\ProductInfo.cs" />
@@ -270,12 +279,14 @@
     <Compile Include="Models\RepDataModel.cs" />
     <Compile Include="Models\RepDetailedModel.cs" />
     <Compile Include="Models\RepInteractiveModel.cs" />
-    <Compile Include="Models\RepOther.cs" />
+    <Compile Include="Models\RepOtherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\MbRepository.cs" />
     <Compile Include="Service\InteractiveService.cs" />
+    <Compile Include="Service\RepOtherService.cs" />
+    <Compile Include="Service\RepDataService.cs" />
     <Compile Include="Service\RepDetailedService.cs" />
     <Compile Include="Service\ProductInfoService.cs" />
     <Compile Include="Service\ProductService.cs" />
@@ -329,6 +340,14 @@
     <Content Include="Views\RepDetailed\Summernote.cshtml" />
     <Content Include="Views\Shared\_LayoutAdminLTE.cshtml" />
     <Content Include="Views\RepDetailed\Index.cshtml" />
+    <Content Include="Views\RepData\Index.cshtml" />
+    <Content Include="Views\RepData\Create.cshtml" />
+    <Content Include="Views\RepData\Edit.cshtml" />
+    <Content Include="Views\RepData\Details.cshtml" />
+    <Content Include="Views\RepOther\Create.cshtml" />
+    <Content Include="Views\RepOther\Index.cshtml" />
+    <Content Include="Views\RepOther\Edit.cshtml" />
+    <Content Include="Views\RepOther\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

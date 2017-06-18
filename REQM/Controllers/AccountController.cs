@@ -56,7 +56,7 @@ namespace REQM.Controllers
                     HttpContext.Session["UserID"] = user1.UserId;
                     Session["User"] = user1;
                     //string userID = HttpContext.Session["UserID"] as string;
-                    return RedirectToAction("Index", "Product");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "用户名或密码错误，请重新输入！");
             }

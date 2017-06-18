@@ -155,18 +155,18 @@
                             </ul>
                         </li>
                         <!-- User Account: style can be found in dropdown.less -->
+                        @{
+                            var UserNanme = Session["User"] == null ? string.Empty : ((User)Session["User"]).UserName;
+                        }
                         <li class="dropdown user user-menu">
-                            @{
-                                var UserNanme = Session["User"] == null ? string.Empty : ((User)Session["User"]).UserName;
-                            }
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="../Content/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="~/Content/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs">@UserNanme</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="../Content/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="~/Content/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
                                         @UserNanme - Web Developer
@@ -194,7 +194,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="../Account/Login" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="~/Account/Login" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -215,7 +215,7 @@
                 <!-- 用户信息栏 -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../Content/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="~/Content/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>@UserNanme</p>
@@ -266,7 +266,7 @@
                                 <a href="~/Interactive/Index"><i class="fa fa-circle-o"></i> 交互性需求列表</a>
                             </li>
                             <li>
-                                <a href="~/Product/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
+                                <a href="~/RepData/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
                             </li>
                             <li>
                                 <a href="~/Product/Index"><i class="fa fa-circle-o"></i> 其它需求列表</a>
@@ -291,16 +291,19 @@
                                 <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 产品列表</a>
                             </li>
                             <li>
+                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 产品逻辑列表</a>
+                            </li>
+                            <li>
                                 <a href="~/RepDetailed/Index"><i class="fa fa-circle-o"></i> 功能性需求列表</a>
                             </li>
                             <li>
                                 <a href="~/Interactive/Index"><i class="fa fa-circle-o"></i> 交互性需求列表</a>
                             </li>
                             <li>
-                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
+                                <a href="~/RepData/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
                             </li>
                             <li>
-                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 其它需求列表</a>
+                                <a href="~/RepOther/Index"><i class="fa fa-circle-o"></i> 其它需求列表</a>
                             </li>
                         </ul>
                     </li>
@@ -316,10 +319,10 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="../ProductInfo/Create"><i class="fa fa-circle-o"></i> 需求层次分析</a>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-circle-o"></i> 需求层次分析</a>
                             </li>
                             <li>
-                                <a href="../ProductInfo/Index"><i class="fa fa-circle-o"></i> SWOT分析</a>
+                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> SWOT分析</a>
                             </li>
 
                         </ul>

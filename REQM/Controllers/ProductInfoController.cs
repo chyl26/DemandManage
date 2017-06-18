@@ -16,6 +16,8 @@ namespace REQM.Controllers
         private ProductInfoService productInfoCRUD = new ProductInfoService();
         private RepDetailedService repDetailedCRUD = new RepDetailedService();
         private InteractiveService InteractiveCRUD = new InteractiveService();
+        private RepDataService repDataCRUD = new RepDataService();
+        private RepOtherService repOtherCRUD = new RepOtherService();
 
         // GET: ProductInfo
         [Authentication]
@@ -35,12 +37,18 @@ namespace REQM.Controllers
             //获取功能性需求详情List
             product.RepDetaileds = new List<RepDetailed>();
             product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
+
             //获取交互需求详情List
             product.Interactives = new List<RepInteractive>();
             product.Interactives = InteractiveCRUD.GetInteractivesByProductId(Id);
+
             //获取数据需求详情List
+            product.Datas = new List<RepData>();
+            product.Datas = repDataCRUD.GetRepDatasByProductId(Id);
 
             //获取非功能性需求详情List
+            product.RepOthers = new List<RepOther>();
+            product.RepOthers = repOtherCRUD.GetRepOthersByProductId(Id);
 
             return View(product.ToModel());
         }
@@ -124,13 +132,18 @@ namespace REQM.Controllers
             //获取功能性需求详情List
             product.RepDetaileds = new List<RepDetailed>();
             product.RepDetaileds = repDetailedCRUD.GetRepDetailedsByProductId(Id);
+
             //获取交互需求详情List
             product.Interactives = new List<RepInteractive>();
             product.Interactives = InteractiveCRUD.GetInteractivesByProductId(Id);
 
             //获取数据需求详情List
+            product.Datas = new List<RepData>();
+            product.Datas = repDataCRUD.GetRepDatasByProductId(Id);
 
             //获取非功能性需求详情List
+            product.RepOthers = new List<RepOther>();
+            product.RepOthers = repOtherCRUD.GetRepOthersByProductId(Id);
 
             return View(product.ToModel());
         }

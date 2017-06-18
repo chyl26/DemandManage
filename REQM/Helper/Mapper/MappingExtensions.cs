@@ -72,5 +72,29 @@ namespace REQM.Helper
             return model.MapTo<RepInteractiveModel, RepInteractive>();
         }
         #endregion
+
+        #region  RepData
+        public static RepDataModel ToModel(this RepData entity)
+        {
+            return entity.MapTo<RepData, RepDataModel>();
+        }
+
+        public static RepData ToEntity(this RepDataModel model)
+        {
+            return model.MapTo<RepDataModel, RepData>();
+        }
+        #endregion
+
+        #region  RepOther
+        public static RepOtherModel ToModel(this RepOther entity)
+        {
+            return entity.MapTo<RepOther, RepOtherModel>();
+        }
+
+        public static RepOther ToEntity(this RepOtherModel model)
+        {
+            return model.MapTo<RepOtherModel, RepOther>();
+        }
+        #endregion
     }
 }

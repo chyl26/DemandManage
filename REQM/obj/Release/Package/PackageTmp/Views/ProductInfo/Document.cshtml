@@ -61,9 +61,11 @@
                                 <!--产品文档内容-->
                                 <div id="content_body">
                                     <!--功能性需求详情-->
+                                    <hr />
+                                    <h2>功能性需求</h2>
                                     @foreach (var Detaileds in Model.RepDetaileds)
                                     {
-                                        <h2>@Detaileds.RepName 优先级：@Detaileds.Priority</h2>
+                                        <h3>@Detaileds.RepName 优先级：@Detaileds.Priority</h3>
                                         <p>@Detaileds.user.DisplayName by @Detaileds.CreateAt</p>
                                         @Html.LabelFor(m => m.RepDetaileds)
                                         <!--将Html转换成文本输出-->
@@ -77,9 +79,11 @@
                                         }
                                     }
                                     <!--交互需求详情-->
+                                    <hr />
+                                    <h2>交互需求</h2>
                                     @foreach (var Interactives in Model.Interactives)
                                     {
-                                        <h2>@Interactives.InteractiveName 优先级：@Interactives.Priority</h2>
+                                        <h3>@Interactives.InteractiveName 优先级：@Interactives.Priority</h3>
                                         <p>@Interactives.user.DisplayName by @Interactives.CreateAt</p>
                                         @Html.LabelFor(m => m.RepDetaileds)
                                         <!--将Html转换成文本输出-->
@@ -94,9 +98,11 @@
                                     }
 
                                     <!--数据需求详情-->
+                                    <hr />
+                                    <h2>数据需求</h2>
                                     @foreach (var datas in Model.Datas)
                                     {
-                                        <h2>@datas.DataName 优先级：@datas.Priority</h2>
+                                        <h3>@datas.DataName 优先级：@datas.Priority</h3>
                                         <p>@datas.user.DisplayName by @datas.CreateAt</p>
                                         @Html.LabelFor(m => m.RepDetaileds)
                                         <!--将Html转换成文本输出-->
@@ -111,10 +117,12 @@
                                     }
 
                                     <!--其它需求详情-->
+                                    <hr />
+                                    <h2>非功能性需求</h2>
                                     @foreach (var repOthers in Model.RepOthers)
                                     {
-                                        <h2>@repOthers.RepOtherName 优先级：@repOthers.Priority</h2>
-                                        <p>@repOthers.DisplayName by @repOthers.CreateAt</p>
+                                        <h3>@repOthers.RepOtherName 优先级：@repOthers.Priority</h3>
+                                        <p>@repOthers.user.DisplayName by @repOthers.CreateAt</p>
                                         @Html.LabelFor(m => m.RepDetaileds)
                                         <!--将Html转换成文本输出-->
                                         <pre>@Html.Raw(HttpUtility.HtmlDecode(repOthers.RepOtherDescribe))</pre>

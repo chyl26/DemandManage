@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="RepOther" xmlns="http://ibatis.apache.org/mapping"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- 设置别名，用于底下指定类型的时候不需要全全类名(包括长的空间名 ),最后一个参数是项目的命名空间名 -->
+  <alias>
+    <typeAlias alias="RepOther" type="REQM.Domain.RepOther, REQM"/>
+  </alias>
+
+  <!-- 数据库到实体类的映射表 -->
+  <resultMaps>
+
+    <!-- 数据库的全部字段到实体类的映射 -->
+    <resultMap id="SelectAllResult" class="RepOther">
+      <result property="ProductId" column="ProductId" dbType="char" type="string" />
+      <result property="RepOtherId" column="RepOtherId" dbType="char" type="string" />
+      <result property="RepOtherName" column="RepOtherName" dbType="varchar" type="string" />
+      <result property="Priority" column="Priority" dbType="varchar" type="string" />
+      <result property="RepOtherDescribe" column="RepOtherDescribe" dbType="mediumtext" type="string" />
+      <result property="CreateAt" column="CreateAt" dbType="DateTime" type="DateTime" />
+      <result property="Reviser" column="Reviser" dbType="varchar" type="string" />
+      <result property="UpdateAt" column="UpdateAt" dbType="DateTime" type="DateTime" />
+      <result property="Revision" column="Revision" dbType="varchar" type="string" />
+      <result property="user.UserId" column="UserId" dbType="char" type="string" />
+      <result property="user.DisplayName" column="DisplayName" dbType="varchar" type="string" />
+    </resultMap>
+
+
+    <!-- 这里可以配置其它只需要指定字段的映射文件(这里是不返回ID) -->
+  </resultMaps>
+
+  <!-- 声明执行语句列表，可以包含多个<select>、<insert>、<update>、<delete>节点 -->
+  <!-- 为了避免SQL语句出现的'<'和'>'会和配置文件的<>冲突，所以SQL语句都写在<![CDATA[  与  ]]>之间 -->
+  <statements>
+
+    <!-- 添加句子SQL语句 -->
+    <insert id="InsertRepOther" parameterClass="RepOther" >
+      <![CDATA[  
+      insert into RepOthers  
+      (ProductId,RepOtherId,RepOtherName,Priority,RepOtherDescribe,CreateAt,Reviser,UpdateAt,Revision,UserId)  
+      values  
+      (#ProductId#,#RepOtherId#,#RepOtherName#,#Priority#,#RepOtherDescribe#,#CreateAt#,#Reviser#,#UpdateAt#,#Revision#,#user.UserId#)  
+      ]]>
+    </insert>
+
+    <!-- parameterClass表示传入的参数为int -->
+    <delete id="DeleteRepOther" parameterClass="RepOther">
+      <![CDATA[
+          delete from RepOthers  
+          where  
+          RepOtherId = #RepOtherId#
+          ]]>
+    </delete>
+
+    <!-- #UserName# 表示传入实体类参数的属性，表示实体的的属性 -->
+    <update id="UpdateRepOther" parameterClass="RepOther">
+      <![CDATA[  
+          UPDATE RepOthers SET  
+          ProductId=#ProductId#,
+          RepOtherName=#RepOtherName#,
+          Priority=#Priority#,
+          RepOtherDescribe=#RepOtherDescribe#,
+          CreateAt=#CreateAt#,
+          Reviser=#Reviser#,
+          UpdateAt=#UpdateAt#,
+          Revision=#Revision#,
+          UserId=#user.UserId#
+          WHERE  
+          RepOtherId=#RepOtherId#  
+          ]]>
+    </update>
+
+    
+    <!--通过条件查找功能性需求-->
+    <select id="SelectAllRepOther"  parameterClass="RepOther" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.RepOtherId
+          ,a.RepOtherName
+          ,a.Priority
+          ,a.RepOtherDescribe
+          ,a.CreateAt
+          ,a.Reviser
+          ,a.UpdateAt
+          ,a.Revision
+          ,a.UserId
+          ,u.DisplayName
+          FROM RepOthers a left join Users u on a.UserId = u.UserId
+          ]]>
+    </select>
+
+    <!--条件1：通过ProductId查找功能性列表List-->
+    <!-- #value# 是点位符会被传入的parameterClass参数类型，要与传入的参数一致 -->
+    <select id="SelectRepOtherByProductId" parameterClass="RepOther" resultMap="SelectAllResult" extends="SelectAllRepOther">
+      <![CDATA[  
+           where a.ProductId = #ProductId#  
+          ]]>
+    </select>
+    
+    <!--条件2：通过RepdetailedId查找一个功能性需求-->
+    <!-- #value# 是点位符会被传入的parameterClass的string类型代替 -->
+    <select id="SelectRepOtherByDataId" parameterClass="RepOther" resultMap="SelectAllResult" extends="SelectAllRepOther">
+      <![CDATA[  
+           where a.RepOtherId = #RepOtherId#  
+          ]]>
+    </select>
+
+
+    <!-- resultMap="SelectAllResult"表示数据库字段与实体类的映射关系和上面配置的SelectAllResult一样 -->
+    <select id="SelectRepOtherByCondition"  parameterClass="RepOther" resultMap="SelectAllResult">
+      <![CDATA[  
+          SELECT a.ProductId
+          ,a.RepOtherId
+          ,a.RepOtherName
+          ,a.Priority
+          ,a.RepOtherDescribe
+          ,a.CreateAt
+          ,a.Reviser
+          ,a.UpdateAt
+          ,a.Revision
+          ,a.UserId
+          ,u.DisplayName
+          FROM RepOthers a left join Users u on a.UserId = u.UserId left join ProductInfos p on a.ProductId = p.ProductId
+          ]]>
+      <dynamic prepend="WHERE">
+        <isNotEmpty prepend="AND" property="ProductId">
+          <![CDATA[  
+           a.ProductId = #ProductId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RepOtherId">
+          <![CDATA[  
+           a.RepOtherId = #RepOtherId#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RepOtherName">
+          <![CDATA[  
+           a.RepOtherName = #RepOtherName#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Priority">
+          <![CDATA[  
+           a.Priority = #Priority#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="RepOtherDescribe">
+          <![CDATA[  
+           a.RepOtherDescribe = #RepOtherDescribe#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="CreateAt">
+          <![CDATA[  
+           a.CreateAt = #CreateAt#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Reviser">
+          <![CDATA[  
+           a.Reviser = #Reviser#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="UpdateAt">
+          <![CDATA[  
+           a.UpdateAt = #UpdateAt#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="Revision">
+          <![CDATA[  
+           a.Revision = #Revision#
+            ]]>
+        </isNotEmpty>
+        <isNotEmpty prepend="AND" property="user.UserId">
+          <![CDATA[  
+           a.UserId = #User.UserId#
+            ]]>
+        </isNotEmpty>
+
+      </dynamic>
+    </select>
+
+  </statements>
+
+</sqlMap>

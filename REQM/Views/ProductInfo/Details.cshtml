@@ -41,13 +41,26 @@
         </div>
 
         <div class="box-header with-border text-center">
-            <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">1-创建产品逻辑说明</a> |
-            <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">2-创建功能需求</a> |
-            <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/Interactive/Create/"+Model.ProductId)">3-创建交互需求</a> |
-            <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepData/Create/"+Model.ProductId)">4-创建数据需求</a> |
-            <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepOther/Create/"+Model.ProductId)">5-创建非功能需求</a> |
-            <a class="btn btn-info" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">6-创建运营方案</a> |
-            <a class="btn btn-primary" id="NewProduct" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">7-创建客服文档</a>
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-info fa fa-plus" data-toggle="dropdown">创建需求</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Content("~/Logic/Create/"+Model.ProductId)">1-创建产品逻辑说明</a></li>
+                            <li><a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">2-创建功能需求</a></li>
+                            <li><a href="@Url.Content("~/Interactive/Create/"+Model.ProductId)">3-创建交互需求</a></li>
+                            <li><a href="@Url.Content("~/RepData/Create/"+Model.ProductId)">4-创建数据需求</a></li>
+                            <li><a href="@Url.Content("~/RepOther/Create/"+Model.ProductId)">5-创建非功能需求</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="btn btn-info" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">创建客服文档 </a></li>
+                    <li><a class="btn btn-info" href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">创建客服文档</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="box-body">
@@ -60,6 +73,36 @@
                     <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Revision)</td>
                     <td align="center"><label>操作</label></td>
                 </tr>
+                <!--产品逻辑标题-->
+                <tr><th colspan="6">@Html.LabelFor(Model => Model.Logics)</th></tr>
+                <!--功能需求列表-->
+                @foreach (var logic in Model.Logics)
+            {
+                    @*将ProductId和RepDetailedId传到后台*@
+                    @Html.HiddenFor(Model => logic.LogicId)
+                    @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                    <tr>
+                        <td>@logic.LogicName</td>
+                        <td> </td>
+                        @if (logic.Revision == null)
+                        {
+                            <td>@logic.CreateAt</td>
+                            <td>@logic.user.DisplayName</td>
+                        }
+                        else
+                        {
+                            <td>@logic.UpdateAt</td>
+                            <td>@logic.Reviser</td>
+                        }
+                        <td>@logic.Revision</td>
+                        <td>
+                            <a href="@Url.Content("~/Logic/Details/"+logic.LogicId)">详情</a> |
+                            <a href="@Url.Content("~/Logic/Edit/"+logic.LogicId)">编辑</a> |
+                            <a href="@Url.Content("~/Logic/Delete/"+logic.LogicId)">删除</a>
+                        </td>
+                    </tr>
+                }
                 <!--需求类型标题-->
                 <tr><th colspan="6">@Html.LabelFor(Model => Model.RepDetaileds)</th></tr>
                 <!--功能需求列表-->

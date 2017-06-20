@@ -53,7 +53,7 @@
 
                 </div>
                 @Html.HiddenFor(Model => Model.ProductId)
-                @Html.HiddenFor(Model => Model.RepOtherId)
+                @Html.HiddenFor(Model => Model.RepOtherDescribe)
                 <div class="form-group">
 
                     <div id="summernote" placeholder="请输入非功能性需求"></div>
@@ -82,7 +82,9 @@
 @section scripts{
     <!-- 内部javascript -->
     <script>
+
         $(document).ready(function () {
+
             var placeholder = $("#summernote").attr("placeholder") || '';//设置输入提示
             var url = $("#summernote").attr("action") || '';//设置上传图片的url
             $("#summernote").summernote({
@@ -134,7 +136,7 @@
         $("form").submit(function (e) {
             var makrup = $("#summernote").summernote('code');
 
-            //将文档编辑器的内容赋给要存储的属性（如Productlogic）
+            //var encodevalue = htmlEncode(makrup);
             $("#RepOtherDescribe").val(makrup);
         });
 

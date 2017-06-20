@@ -239,95 +239,122 @@
                 <ul class="sidebar-menu">
                     <li class="treeview">
                         <a href="~/Home/Index">
-                            <i class="fa fa-star-o"></i> <span>MyHeplerHome</span>
+                            <i class="fa fa-home"></i> <span>MyHeplerHome</span>
                         </a>
                     </li>
-
                     <li class="header">产品管理</li>
-                    <!--  第一个菜单开始  -->
+                    <!--  产品管理模块开始  -->
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>产品需求管理</span>
+                        <a href="~/ProductInfo/Index">
+                            <i class="fa fa-cubes"></i>
+                            <span>产品管理</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="~/Product/Create"><i class="fa fa-circle-o"></i> 创建产品需求</a>
-                            </li>
-                            <li>
-                                <a href="~/Product/Index"><i class="fa fa-circle-o"></i> 产品列表</a>
-                            </li>
-                            <li>
-                                <a href="~/RepDetailed/Index"><i class="fa fa-circle-o"></i> 功能性需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/Interactive/Index"><i class="fa fa-circle-o"></i> 交互性需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/RepData/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/Product/Index"><i class="fa fa-circle-o"></i> 其它需求列表</a>
-                            </li>
-                        </ul>
                     </li>
-                    <!--  第一个菜单结束  -->
-                    <!--  第二个菜单开始  -->
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-files-o"></i>
-                            <span>新产品管理</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
+                        <a href="~/Logic/Index">
+                            <i class="fa fa-graduation-cap"></i>
+                            <span>产品逻辑管理</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="~/ProductInfo/Create"><i class="fa fa-circle-o"></i> 创建产品需求</a>
-                            </li>
-                            <li>
-                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 产品列表</a>
-                            </li>
-                            <li>
-                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> 产品逻辑列表</a>
-                            </li>
-                            <li>
-                                <a href="~/RepDetailed/Index"><i class="fa fa-circle-o"></i> 功能性需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/Interactive/Index"><i class="fa fa-circle-o"></i> 交互性需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/RepData/Index"><i class="fa fa-circle-o"></i> 数据需求列表</a>
-                            </li>
-                            <li>
-                                <a href="~/RepOther/Index"><i class="fa fa-circle-o"></i> 其它需求列表</a>
-                            </li>
-                        </ul>
                     </li>
-                    <!--  第二个菜单结束  -->
-                    <!--  第三个菜单开始  -->
                     <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-laptop"></i>
-                            <span>常用分析工具</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
+                        <a href="~/RepDetailed/Index">
+                            <i class="fa fa-navicon"></i>
+                            <span>功能性需求管理</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="~/ProductInfo/Create"><i class="fa fa-circle-o"></i> 需求层次分析</a>
-                            </li>
-                            <li>
-                                <a href="~/ProductInfo/Index"><i class="fa fa-circle-o"></i> SWOT分析</a>
-                            </li>
+                    </li>
+                    <li class="treeview">
+                        <a href="~/Interactive/Index">
+                            <i class="fa fa-gamepad"></i>
+                            <span>交互性需求管理</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="~/RepData/Index">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>数据需求管理</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="~/RepOther/Index">
+                            <i class="fa fa-shield"></i>
+                            <span>非功能需求管理</span>
+                        </a>
+                    </li>
 
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-object-group"></i>
+                            <span>需求池管理</span>
+                        </a>                        
+                    </li>
+                    <!--  常用工具结束  -->
+                    <li class="header">其它实用</li>
+                    <!--  常用工具开始  -->
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-anchor"></i>
+                            <span>常用工具</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-pencil-square-o"></i>SWOT分析</a>
+                            </li>
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-bug"></i>KANA需求分析</a>
+                            </li>
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-object-group"></i>需求层次分析</a>
+                            </li>
                         </ul>
                     </li>
-                    <!--  第三个菜单结束  -->
+                    <!--  常用工具结束  -->
+                    <!--  产品运营方案开始  -->
+                    <li class="treeview">
+                        <a href="~/OperatingDoc/Index">
+                            <i class="fa fa-suitcase"></i>
+                            <span>产品运营方案</span>
+                        </a>                        
+                    </li>
+                    <!--  产品运营方案结束  -->
+                    <!--  客服文档开始  -->
+                    <li class="treeview">
+                        <a href="~/HelpDoc/Index">
+                            <i class="fa fa-laptop"></i>
+                            <span>客服文档</span>
+                        </a>
+                    </li>
+                    <!--  客服文档结束  -->
+                    <!--  笔记开始  -->
+                    <li class="treeview">
+                        <a href="~/Notes/Index">
+                            <i class="fa fa-sticky-note-o"></i>
+                            <span>笔记管理</span>
+                        </a>
+                    </li>
+                    <!--  笔记结束  -->
+                    <li class="header">系统设置</li>
+                    <!--  系统管理模块开始  -->
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gear"></i>
+                            <span>系统管理</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="~/User/Index"><i class="fa fa-users"></i> 用户管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--  系统管理结束  -->
                 </ul>
             </section>
             <!--折叠菜单结束 -->

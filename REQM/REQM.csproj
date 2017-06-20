@@ -238,6 +238,9 @@
     <EmbeddedResource Include="MapFiles\RepOther.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\Logic.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +249,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InteractiveController.cs" />
+    <Compile Include="Controllers\LogicController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductInfoController.cs" />
     <Compile Include="Controllers\RepDataController.cs" />
@@ -273,6 +277,7 @@
     <Compile Include="Helper\ResourceType.cs" />
     <Compile Include="Helper\SerializeObjectToString.cs" />
     <Compile Include="Models\HelpDocModel.cs" />
+    <Compile Include="Models\LogicModel.cs" />
     <Compile Include="Models\OperatingDocModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductInfoModel.cs" />
@@ -285,6 +290,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\MbRepository.cs" />
     <Compile Include="Service\InteractiveService.cs" />
+    <Compile Include="Service\LogicService.cs" />
     <Compile Include="Service\RepOtherService.cs" />
     <Compile Include="Service\RepDataService.cs" />
     <Compile Include="Service\RepDetailedService.cs" />
@@ -348,6 +354,10 @@
     <Content Include="Views\RepOther\Index.cshtml" />
     <Content Include="Views\RepOther\Edit.cshtml" />
     <Content Include="Views\RepOther\Details.cshtml" />
+    <Content Include="Views\Logic\Index.cshtml" />
+    <Content Include="Views\Logic\Create.cshtml" />
+    <Content Include="Views\Logic\Edit.cshtml" />
+    <Content Include="Views\Logic\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

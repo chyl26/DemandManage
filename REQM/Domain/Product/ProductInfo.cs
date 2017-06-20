@@ -30,6 +30,9 @@ namespace REQM.Domain
 
         public User user { get; set; }
 
+        [Display(Name = "产品逻辑描述")]
+        public IList<Logic> Logics { get; set; }
+
         [Display(Name ="功能需求描述")]
         public IList<RepDetailed> RepDetaileds { get; set; }
 

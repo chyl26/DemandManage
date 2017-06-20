@@ -85,7 +85,7 @@
       <publishTime>05/29/2017 20:58:58</publishTime>
     </File>
     <File Include="bin/REQM.dll">
-      <publishTime>06/18/2017 22:01:25</publishTime>
+      <publishTime>06/20/2017 08:22:17</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>05/29/2017 20:58:58</publishTime>
@@ -124,7 +124,7 @@
       <publishTime>05/29/2017 20:58:58</publishTime>
     </File>
     <File Include="bin/SqlMap.config">
-      <publishTime>06/18/2017 21:15:16</publishTime>
+      <publishTime>06/19/2017 12:44:46</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>05/29/2017 20:58:58</publishTime>
@@ -313,7 +313,7 @@
       <publishTime>05/29/2017 20:58:58</publishTime>
     </File>
     <File Include="SqlMap.config">
-      <publishTime>06/18/2017 21:15:16</publishTime>
+      <publishTime>06/19/2017 12:44:46</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>06/14/2017 21:47:00</publishTime>
@@ -336,6 +336,18 @@
     <File Include="Views/Interactive/Index.cshtml">
       <publishTime>06/16/2017 22:16:33</publishTime>
     </File>
+    <File Include="Views/Logic/Create.cshtml">
+      <publishTime>06/19/2017 20:28:44</publishTime>
+    </File>
+    <File Include="Views/Logic/Details.cshtml">
+      <publishTime>06/19/2017 20:30:39</publishTime>
+    </File>
+    <File Include="Views/Logic/Edit.cshtml">
+      <publishTime>06/19/2017 20:33:06</publishTime>
+    </File>
+    <File Include="Views/Logic/Index.cshtml">
+      <publishTime>06/19/2017 13:07:59</publishTime>
+    </File>
     <File Include="Views/Product/Create.cshtml">
       <publishTime>06/15/2017 21:47:19</publishTime>
     </File>
@@ -352,16 +364,16 @@
       <publishTime>06/16/2017 22:37:12</publishTime>
     </File>
     <File Include="Views/ProductInfo/Details.cshtml">
-      <publishTime>06/18/2017 21:19:45</publishTime>
+      <publishTime>06/20/2017 08:18:50</publishTime>
     </File>
     <File Include="Views/ProductInfo/Document.cshtml">
-      <publishTime>06/18/2017 21:53:09</publishTime>
+      <publishTime>06/18/2017 22:46:16</publishTime>
     </File>
     <File Include="Views/ProductInfo/Edit.cshtml">
       <publishTime>06/16/2017 22:36:56</publishTime>
     </File>
     <File Include="Views/ProductInfo/Index.cshtml">
-      <publishTime>06/16/2017 22:36:56</publishTime>
+      <publishTime>06/20/2017 08:09:36</publishTime>
     </File>
     <File Include="Views/RepData/Create.cshtml">
       <publishTime>06/18/2017 16:31:32</publishTime>
@@ -376,7 +388,7 @@
       <publishTime>06/18/2017 15:40:12</publishTime>
     </File>
     <File Include="Views/RepDetailed/Create.cshtml">
-      <publishTime>06/16/2017 22:36:15</publishTime>
+      <publishTime>06/18/2017 22:40:19</publishTime>
     </File>
     <File Include="Views/RepDetailed/Details.cshtml">
       <publishTime>06/16/2017 22:35:06</publishTime>
@@ -391,7 +403,7 @@
       <publishTime>06/14/2017 06:00:03</publishTime>
     </File>
     <File Include="Views/RepOther/Create.cshtml">
-      <publishTime>06/18/2017 21:32:30</publishTime>
+      <publishTime>06/18/2017 22:36:59</publishTime>
     </File>
     <File Include="Views/RepOther/Details.cshtml">
       <publishTime>06/18/2017 21:06:41</publishTime>
@@ -406,7 +418,7 @@
       <publishTime>06/13/2017 21:41:13</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutAdminLTE.cshtml">
-      <publishTime>06/18/2017 21:18:22</publishTime>
+      <publishTime>06/20/2017 07:28:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout_Empty.cshtml">
       <publishTime>06/15/2017 18:40:19</publishTime>

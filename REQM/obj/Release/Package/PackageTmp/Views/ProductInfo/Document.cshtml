@@ -84,16 +84,16 @@
                                     @foreach (var Interactives in Model.Interactives)
                                     {
                                         <h3>@Interactives.InteractiveName 优先级：@Interactives.Priority</h3>
-                                        <p>@Interactives.user.DisplayName by @Interactives.CreateAt</p>
-                                        @Html.LabelFor(m => m.RepDetaileds)
+                                            <p>@Interactives.user.DisplayName by @Interactives.CreateAt</p>
+                                            @Html.LabelFor(m => m.RepDetaileds)
                                         <!--将Html转换成文本输出-->
-                                        <pre>@Html.Raw(HttpUtility.HtmlDecode(Interactives.InteractiveDescribe))</pre>
+                                            <pre>@Html.Raw(HttpUtility.HtmlDecode(Interactives.InteractiveDescribe))</pre>
 
                                         if (Interactives.Revision != null)
                                         {
                                             <label>修订记录</label>
-                                            <p>@Interactives.Reviser by @Interactives.UpdateAt</p>
-                                            <pre>@Interactives.Revision</pre>
+                                                <p>@Interactives.Reviser by @Interactives.UpdateAt</p>
+                                                <pre>@Interactives.Revision</pre>
                                         }
                                     }
 

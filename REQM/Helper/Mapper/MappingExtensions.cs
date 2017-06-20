@@ -96,5 +96,17 @@ namespace REQM.Helper
             return model.MapTo<RepOtherModel, RepOther>();
         }
         #endregion
+
+        #region  Logic
+        public static LogicModel ToModel(this Logic entity)
+        {
+            return entity.MapTo<Logic, LogicModel>();
+        }
+
+        public static Logic ToEntity(this LogicModel model)
+        {
+            return model.MapTo<LogicModel, Logic>();
+        }
+        #endregion
     }
 }

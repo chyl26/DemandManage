@@ -364,7 +364,7 @@
       <publishTime>06/16/2017 22:37:12</publishTime>
     </File>
     <File Include="Views/ProductInfo/Details.cshtml">
-      <publishTime>06/20/2017 12:51:52</publishTime>
+      <publishTime>06/21/2017 13:18:15</publishTime>
     </File>
     <File Include="Views/ProductInfo/Document.cshtml">
       <publishTime>06/18/2017 22:46:16</publishTime>
@@ -418,7 +418,7 @@
       <publishTime>06/13/2017 21:41:13</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutAdminLTE.cshtml">
-      <publishTime>06/20/2017 07:28:50</publishTime>
+      <publishTime>06/21/2017 13:18:15</publishTime>
     </File>
     <File Include="Views/Shared/_Layout_Empty.cshtml">
       <publishTime>06/15/2017 18:40:19</publishTime>

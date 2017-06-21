@@ -40,192 +40,233 @@
             </div>
         </div>
 
-        <div class="box-header with-border text-right">
-            <a class="btn btn-info " href="@Url.Content("~/Logic/Create/"+Model.ProductId)">创建产品逻辑</a>
-            <div class="btn-group ">
-                <button type="button" class="btn btn-info">创建需求描述</button>
+        <div class="box-header with-border">
+
+            <div class="btn-group text-right">
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
+                    创建需求描述 <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu">                    
-                    <li><a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">1-创建功能需求</a></li>
-                    <li><a href="@Url.Content("~/Interactive/Create/"+Model.ProductId)">2-创建交互需求</a></li>
-                    <li><a href="@Url.Content("~/RepData/Create/"+Model.ProductId)">3-创建数据需求</a></li>
-                    <li><a href="@Url.Content("~/RepOther/Create/"+Model.ProductId)">4-创建非功能需求</a></li>
+                <ul class="dropdown-menu text-left">
+                    <li>
+                        <a href="@Url.Content("~/Logic/Create/"+Model.ProductId)">
+                            <i class="fa fa-graduation-cap"></i>
+                            <span>1-创建产品逻辑</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">
+                            <i class="fa fa-navicon"></i>
+                            <span>2-创建功能需求</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/Interactive/Create/"+Model.ProductId)">
+                            <i class="fa fa-gamepad"></i>
+                            <span>3-创建交互需求</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/RepData/Create/"+Model.ProductId)">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>4-创建数据需求</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/RepOther/Create/"+Model.ProductId)">
+                            <i class="fa fa-shield"></i>
+                            <span>5-创建非功能需求</span>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">
+                            <i class="fa fa-suitcase"></i>
+                            <span>运营方案</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">
+                            <i class="fa fa-laptop"></i>
+                            <span>客服文档</span>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">
+                            <i class="fa fa-group"></i>
+                            <span>会议记录</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <a class="btn btn-info " href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">创建产品运营方案</a>
-            <a class="btn btn-info " href="@Url.Content("~/RepDetailed/Create/"+Model.ProductId)">创建客服文档</a>
+
+
+            <div class="box-body text-left">
+                <table class="table table-bordered table-condensed table-hover table-striped">
+                    <tr>
+                        <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].RepName)</td>
+                        <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Priority)</td>
+                        <td align="center"><label>创建/修改时间</label></td>
+                        <td align="center"><label>创建/修改人</label></td>
+                        <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Revision)</td>
+                        <td align="center"><label>操作</label></td>
+                    </tr>
+                    <!--产品逻辑标题-->
+                    <tr><th colspan="6">@Html.LabelFor(Model => Model.Logics)</th></tr>
+                    <!--功能需求列表-->
+                    @foreach (var logic in Model.Logics)
+            {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => logic.LogicId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                        <tr>
+                            <td>@logic.LogicName</td>
+                            <td> </td>
+                            @if (logic.Revision == null)
+                            {
+                                <td>@logic.CreateAt</td>
+                                <td>@logic.user.DisplayName</td>
+                            }
+                            else
+                            {
+                                <td>@logic.UpdateAt</td>
+                                <td>@logic.Reviser</td>
+                            }
+                            <td>@logic.Revision</td>
+                            <td>
+                                <a href="@Url.Content("~/Logic/Details/"+logic.LogicId)">详情</a> |
+                                <a href="@Url.Content("~/Logic/Edit/"+logic.LogicId)">编辑</a> |
+                                <a href="@Url.Content("~/Logic/Delete/"+logic.LogicId)">删除</a>
+                            </td>
+                        </tr>
+                    }
+                    <!--需求类型标题-->
+                    <tr><th colspan="6">@Html.LabelFor(Model => Model.RepDetaileds)</th></tr>
+                    <!--功能需求列表-->
+                    @foreach (var Detaileds in Model.RepDetaileds)
+            {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => Detaileds.RepDetailedId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                        <tr>
+                            <td>@Detaileds.RepName</td>
+                            <td>@Detaileds.Priority</td>
+                            @if (Detaileds.Revision == null)
+                            {
+                                <td>@Detaileds.CreateAt</td>
+                                <td>@Detaileds.user.DisplayName</td>
+                            }
+                            else
+                            {
+                                <td>@Detaileds.UpdateAt</td>
+                                <td>@Detaileds.Reviser</td>
+                            }
+                            <td>@Detaileds.Revision</td>
+                            <td>
+                                <a href="@Url.Content("~/RepDetailed/Details/"+Detaileds.RepDetailedId)">详情</a> |
+                                <a href="@Url.Content("~/RepDetailed/Edit/"+Detaileds.RepDetailedId)">编辑</a> |
+                                <a href="@Url.Content("~/RepDetailed/Delete/"+Detaileds.RepDetailedId)">删除</a>
+                            </td>
+                        </tr>
+                    }
+                    <!--交互需求详情-->
+                    <!--需求类型标题-->
+                    <tr><th colspan="6">@Html.LabelFor(Model => Model.Interactives)</th></tr>
+                    @foreach (var Interactives in Model.Interactives)
+            {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => Interactives.InteractiveId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                        <tr>
+                            <td>@Interactives.InteractiveName</td>
+                            <td>@Interactives.Priority</td>
+                            @if (Interactives.Revision == null)
+                            {
+                                <td>@Interactives.CreateAt</td>
+                                <td>@Interactives.user.DisplayName</td>
+                            }
+                            else
+                            {
+                                <td>@Interactives.UpdateAt</td>
+                                <td>@Interactives.Reviser</td>
+                            }
+                            <td>@Interactives.Revision</td>
+                            <td>
+                                <a href="@Url.Content("~/Interactive/Details/"+Interactives.InteractiveId)">详情</a> |
+                                <a href="@Url.Content("~/Interactive/Edit/"+Interactives.InteractiveId)">编辑</a> |
+                                <a href="@Url.Content("~/Interactive/Delete/"+Interactives.InteractiveId)">删除</a>
+                            </td>
+                        </tr>
+                    }
+                    <!--数据需求详情-->
+                    <!--需求类型标题-->
+                    <tr><th colspan="6">@Html.LabelFor(Model => Model.Datas)</th></tr>
+                    @foreach (var repDatas in Model.Datas)
+            {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => repDatas.DataId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                        <tr>
+                            <td>@repDatas.DataName</td>
+                            <td>@repDatas.Priority</td>
+                            @if (repDatas.Revision == null)
+                            {
+                                <td>@repDatas.CreateAt</td>
+                                <td>@repDatas.user.DisplayName</td>
+                            }
+                            else
+                            {
+                                <td>@repDatas.UpdateAt</td>
+                                <td>@repDatas.Reviser</td>
+                            }
+                            <td>@repDatas.Revision</td>
+                            <td>
+                                <a href="@Url.Content("~/RepData/Details/"+repDatas.DataId)">详情</a> |
+                                <a href="@Url.Content("~/RepData/Edit/"+repDatas.DataId)">编辑</a> |
+                                <a href="@Url.Content("~/RepData/Delete/"+repDatas.DataId)">删除</a>
+                            </td>
+                        </tr>
+                    }
+
+                    <!--其它需求详情-->
+                    <!--需求类型标题-->
+                    <tr><th colspan="6">@Html.LabelFor(Model => Model.RepOthers)</th></tr>
+                    @foreach (var repOthers in Model.RepOthers)
+            {
+                        @*将ProductId和RepDetailedId传到后台*@
+                        @Html.HiddenFor(Model => repOthers.RepOtherId)
+                        @Html.HiddenFor(Model => Model.ProductId)
+                        <!--功能性需求详细说明-->
+                        <tr>
+                            <td>@repOthers.RepOtherName</td>
+                            <td>@repOthers.Priority</td>
+                            @if (repOthers.Revision == null)
+                            {
+                                <td>@repOthers.CreateAt</td>
+                                <td>@repOthers.user.DisplayName</td>
+                            }
+                            else
+                            {
+                                <td>@repOthers.UpdateAt</td>
+                                <td>@repOthers.Reviser</td>
+                            }
+                            <td>@repOthers.Revision</td>
+                            <td>
+                                <a href="@Url.Content("~/RepOther/Details/"+repOthers.RepOtherId)">详情</a> |
+                                <a href="@Url.Content("~/RepOther/Edit/"+repOthers.RepOtherId)">编辑</a> |
+                                <a href="@Url.Content("~/RepOther/Delete/"+repOthers.RepOtherId)">删除</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <!-- /.box-body -->
+            </div>
         </div>
-
-        <div class="box-body">
-            <table class="table table-bordered table-condensed table-hover table-striped">
-                <tr>
-                    <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].RepName)</td>
-                    <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Priority)</td>
-                    <td align="center"><label>创建/修改时间</label></td>
-                    <td align="center"><label>创建/修改人</label></td>
-                    <td align="center">@Html.LabelFor(Model => Model.RepDetaileds[0].Revision)</td>
-                    <td align="center"><label>操作</label></td>
-                </tr>
-                <!--产品逻辑标题-->
-                <tr><th colspan="6">@Html.LabelFor(Model => Model.Logics)</th></tr>
-                <!--功能需求列表-->
-                @foreach (var logic in Model.Logics)
-            {
-                    @*将ProductId和RepDetailedId传到后台*@
-                    @Html.HiddenFor(Model => logic.LogicId)
-                    @Html.HiddenFor(Model => Model.ProductId)
-                        <!--功能性需求详细说明-->
-                    <tr>
-                        <td>@logic.LogicName</td>
-                        <td> </td>
-                        @if (logic.Revision == null)
-                        {
-                            <td>@logic.CreateAt</td>
-                            <td>@logic.user.DisplayName</td>
-                        }
-                        else
-                        {
-                            <td>@logic.UpdateAt</td>
-                            <td>@logic.Reviser</td>
-                        }
-                        <td>@logic.Revision</td>
-                        <td>
-                            <a href="@Url.Content("~/Logic/Details/"+logic.LogicId)">详情</a> |
-                            <a href="@Url.Content("~/Logic/Edit/"+logic.LogicId)">编辑</a> |
-                            <a href="@Url.Content("~/Logic/Delete/"+logic.LogicId)">删除</a>
-                        </td>
-                    </tr>
-                }
-                <!--需求类型标题-->
-                <tr><th colspan="6">@Html.LabelFor(Model => Model.RepDetaileds)</th></tr>
-                <!--功能需求列表-->
-                @foreach (var Detaileds in Model.RepDetaileds)
-            {
-                    @*将ProductId和RepDetailedId传到后台*@
-                    @Html.HiddenFor(Model => Detaileds.RepDetailedId)
-                    @Html.HiddenFor(Model => Model.ProductId)
-                        <!--功能性需求详细说明-->
-                    <tr>
-                        <td>@Detaileds.RepName</td>
-                        <td>@Detaileds.Priority</td>
-                        @if (Detaileds.Revision == null)
-                        {
-                            <td>@Detaileds.CreateAt</td>
-                            <td>@Detaileds.user.DisplayName</td>
-                        }
-                        else
-                        {
-                            <td>@Detaileds.UpdateAt</td>
-                            <td>@Detaileds.Reviser</td>
-                        }
-                        <td>@Detaileds.Revision</td>
-                        <td>
-                            <a href="@Url.Content("~/RepDetailed/Details/"+Detaileds.RepDetailedId)">详情</a> |
-                            <a href="@Url.Content("~/RepDetailed/Edit/"+Detaileds.RepDetailedId)">编辑</a> |
-                            <a href="@Url.Content("~/RepDetailed/Delete/"+Detaileds.RepDetailedId)">删除</a>
-                        </td>
-                    </tr>
-                }
-                <!--交互需求详情-->
-                <!--需求类型标题-->
-                <tr><th colspan="6">@Html.LabelFor(Model => Model.Interactives)</th></tr>
-                @foreach (var Interactives in Model.Interactives)
-            {
-                    @*将ProductId和RepDetailedId传到后台*@
-                    @Html.HiddenFor(Model => Interactives.InteractiveId)
-                    @Html.HiddenFor(Model => Model.ProductId)
-                        <!--功能性需求详细说明-->
-                    <tr>
-                        <td>@Interactives.InteractiveName</td>
-                        <td>@Interactives.Priority</td>
-                        @if (Interactives.Revision == null)
-                        {
-                            <td>@Interactives.CreateAt</td>
-                            <td>@Interactives.user.DisplayName</td>
-                        }
-                        else
-                        {
-                            <td>@Interactives.UpdateAt</td>
-                            <td>@Interactives.Reviser</td>
-                        }
-                        <td>@Interactives.Revision</td>
-                        <td>
-                            <a href="@Url.Content("~/Interactive/Details/"+Interactives.InteractiveId)">详情</a> |
-                            <a href="@Url.Content("~/Interactive/Edit/"+Interactives.InteractiveId)">编辑</a> |
-                            <a href="@Url.Content("~/Interactive/Delete/"+Interactives.InteractiveId)">删除</a>
-                        </td>
-                    </tr>
-                }
-                <!--数据需求详情-->
-                <!--需求类型标题-->
-                <tr><th colspan="6">@Html.LabelFor(Model => Model.Datas)</th></tr>
-                @foreach (var repDatas in Model.Datas)
-            {
-                    @*将ProductId和RepDetailedId传到后台*@
-                    @Html.HiddenFor(Model => repDatas.DataId)
-                    @Html.HiddenFor(Model => Model.ProductId)
-                        <!--功能性需求详细说明-->
-                    <tr>
-                        <td>@repDatas.DataName</td>
-                        <td>@repDatas.Priority</td>
-                        @if (repDatas.Revision == null)
-                        {
-                            <td>@repDatas.CreateAt</td>
-                            <td>@repDatas.user.DisplayName</td>
-                        }
-                        else
-                        {
-                            <td>@repDatas.UpdateAt</td>
-                            <td>@repDatas.Reviser</td>
-                        }
-                        <td>@repDatas.Revision</td>
-                        <td>
-                            <a href="@Url.Content("~/RepData/Details/"+repDatas.DataId)">详情</a> |
-                            <a href="@Url.Content("~/RepData/Edit/"+repDatas.DataId)">编辑</a> |
-                            <a href="@Url.Content("~/RepData/Delete/"+repDatas.DataId)">删除</a>
-                        </td>
-                    </tr>
-                }
-
-                <!--其它需求详情-->
-                <!--需求类型标题-->
-                <tr><th colspan="6">@Html.LabelFor(Model => Model.RepOthers)</th></tr>
-                @foreach (var repOthers in Model.RepOthers)
-            {
-                    @*将ProductId和RepDetailedId传到后台*@
-                    @Html.HiddenFor(Model => repOthers.RepOtherId)
-                    @Html.HiddenFor(Model => Model.ProductId)
-                        <!--功能性需求详细说明-->
-                    <tr>
-                        <td>@repOthers.RepOtherName</td>
-                        <td>@repOthers.Priority</td>
-                        @if (repOthers.Revision == null)
-                        {
-                            <td>@repOthers.CreateAt</td>
-                            <td>@repOthers.user.DisplayName</td>
-                        }
-                        else
-                        {
-                            <td>@repOthers.UpdateAt</td>
-                            <td>@repOthers.Reviser</td>
-                        }
-                        <td>@repOthers.Revision</td>
-                        <td>
-                            <a href="@Url.Content("~/RepOther/Details/"+repOthers.RepOtherId)">详情</a> |
-                            <a href="@Url.Content("~/RepOther/Edit/"+repOthers.RepOtherId)">编辑</a> |
-                            <a href="@Url.Content("~/RepOther/Delete/"+repOthers.RepOtherId)">删除</a>
-                        </td>
-                    </tr>
-                }
-
-            </table>
-            <!-- /.box-body -->
-        </div>
-    </div>
-
-    <!-- /.box -->
+        <!-- /.box -->
 
 </section>

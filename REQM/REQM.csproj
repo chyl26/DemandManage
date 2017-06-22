@@ -255,6 +255,7 @@
     <Compile Include="Controllers\RepDataController.cs" />
     <Compile Include="Controllers\RepDetailedController.cs" />
     <Compile Include="Controllers\RepOtherController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\Product\HelpDoc.cs" />
     <Compile Include="Domain\Note.cs" />
     <Compile Include="Domain\Product\Logic.cs" />
@@ -358,6 +359,10 @@
     <Content Include="Views\Logic\Create.cshtml" />
     <Content Include="Views\Logic\Edit.cshtml" />
     <Content Include="Views\Logic\Details.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -108,5 +108,17 @@ namespace REQM.Helper
             return model.MapTo<LogicModel, Logic>();
         }
         #endregion
+
+        #region  OperatingDoc
+        public static OperatingDocModel ToModel(this OperatingDoc entity)
+        {
+            return entity.MapTo<OperatingDoc, OperatingDocModel>();
+        }
+
+        public static OperatingDoc ToEntity(this OperatingDocModel model)
+        {
+            return model.MapTo<OperatingDocModel, OperatingDoc>();
+        }
+        #endregion
     }
 }

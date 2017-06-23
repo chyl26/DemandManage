@@ -1,0 +1,56 @@
+﻿@model List<User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminLTE.cshtml";
+}
+
+<!-- 内容标题 -->
+<section class="content-header">
+    <h1>
+        用户列表
+        <small>用户管理</small>
+    </h1>
+    <!--  导航地图  -->
+    <ol class="breadcrumb">
+        <li><a href="~/Home/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">用户管理</li>
+    </ol>
+</section>
+
+<!-- 内容Panel -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"></h3>
+            <div class="pull-left">
+                <a class="btn btn-primary" href="~/User/Create"><i class="fa fa-plus"></i> 创建用户</a>
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered table-condensed table-hover table-striped">
+                <tr>
+                    <td align="center">@Html.LabelFor(m => m[0].UserName)</td>
+                    <td align="center"><label>创建时间</label></td>
+                    <td align="center"><label>操作</label></td>
+                </tr>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td align="center"><a href="@Url.Content("~/User/Details/"+user.UserId)">@Html.DisplayFor(m => user.UserName)</a></td>
+                        <td align="center"><a href="@Url.Content("~/User/Details/"+user.UserId)">@Html.DisplayFor(m => user.CreateAt)</a></td>
+                        <td align="center">
+                            <a href="@Url.Content("~/User/Details/"+user.UserId)">详情</a> |
+                            <a href="@Url.Content("~/User/Edit/"+user.UserId)">编辑</a> |
+                            <a href="@Url.Content("~/User/Delete/"+user.UserId)">删除</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+</section>
+

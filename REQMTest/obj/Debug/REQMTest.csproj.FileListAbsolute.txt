@@ -95,3 +95,4 @@ E:\DevStudy\DemandManage\REQMTest\bin\Debug\zh-Hans\System.Web.WebPages.Deployme
 E:\DevStudy\DemandManage\REQMTest\obj\Debug\REQMTest.csprojResolveAssemblyReference.cache
 E:\DevStudy\DemandManage\REQMTest\obj\Debug\REQMTest.dll
 E:\DevStudy\DemandManage\REQMTest\obj\Debug\REQMTest.pdb
+E:\projects\DemandManage\REQMTest\obj\Debug\REQMTest.csprojResolveAssemblyReference.cache

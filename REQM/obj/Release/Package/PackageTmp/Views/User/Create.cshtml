@@ -1,0 +1,63 @@
+﻿@model User
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdminLTE.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <!-- 内容标题 -->
+    <section class="content-header">
+        <h1>
+            创建用户
+            <small>用户管理</small>
+        </h1>
+        <!--  导航地图  -->
+        <ol class="breadcrumb">
+            <li><a href="~/Home/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">用户管理</li>
+        </ol>
+    </section>
+
+    <!-- 内容Panel -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            @*<div class="box-header with-border">
+                    <h3 class="box-title">创建新产品</h3>
+                </div>*@
+            <div class="box-body">
+                <!--  这是写入要展示的内容  -->
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "请输入用户名" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.PasswordHash, new { @class = "form-control", placeholder = "请输入密码" })
+                    @Html.ValidationMessageFor(m => m.PasswordHash, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.VerifyPassWord, new { @class = "form-control", placeholder = "请再次输入密码" })
+                    @Html.ValidationMessageFor(m => m.VerifyPassWord, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.MobilePhone, new { @class = "form-control", placeholder = "请输入手机号" })
+                    @Html.ValidationMessageFor(m => m.MobilePhone, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "请输入邮箱" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block" id="btnRegister">保存</button>
+                </div>
+                <!--  这是写入要展示的内容  -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+}

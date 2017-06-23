@@ -241,6 +241,9 @@
     <EmbeddedResource Include="MapFiles\Logic.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\OperatingDoc.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -248,13 +251,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InteractiveController.cs" />
-    <Compile Include="Controllers\LogicController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\ProductInfoController.cs" />
-    <Compile Include="Controllers\RepDataController.cs" />
-    <Compile Include="Controllers\RepDetailedController.cs" />
-    <Compile Include="Controllers\RepOtherController.cs" />
+    <Compile Include="Controllers\OperatingDocController.cs" />
+    <Compile Include="Controllers\Product\InteractiveController.cs" />
+    <Compile Include="Controllers\Product\LogicController.cs" />
+    <Compile Include="Controllers\Product\ProductController.cs" />
+    <Compile Include="Controllers\Product\ProductInfoController.cs" />
+    <Compile Include="Controllers\Product\RepDataController.cs" />
+    <Compile Include="Controllers\Product\RepDetailedController.cs" />
+    <Compile Include="Controllers\Product\RepOtherController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Domain\Product\HelpDoc.cs" />
     <Compile Include="Domain\Note.cs" />
@@ -292,6 +296,7 @@
     <Compile Include="Repository\MbRepository.cs" />
     <Compile Include="Service\InteractiveService.cs" />
     <Compile Include="Service\LogicService.cs" />
+    <Compile Include="Service\OperatingDocService.cs" />
     <Compile Include="Service\RepOtherService.cs" />
     <Compile Include="Service\RepDataService.cs" />
     <Compile Include="Service\RepDetailedService.cs" />
@@ -377,6 +382,7 @@
     <Folder Include="Content\adminLTE\dist\" />
     <Folder Include="Content\adminLTE\plugins\" />
     <Folder Include="Views\File\" />
+    <Folder Include="Views\OperatingDoc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

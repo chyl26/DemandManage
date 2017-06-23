@@ -94,6 +94,17 @@ namespace REQM.Helper
             .ForMember(dest => dest.user, mo => mo.MapFrom(src => new User { UserId = src.UserId }));
             #endregion
 
+            #region  OperatingDoc
+            cfg.CreateMap<OperatingDoc, OperatingDocModel>()
+            //dest表示ViewProduct中的属性，src表示Domain
+            .ForMember(dest => dest.UserId, mo => mo.MapFrom(src => src.user.UserId))
+            .ForMember(dest => dest.DisplayName, mo => mo.MapFrom(src => src.user.DisplayName));
+
+            //将ViewProduct映射到Domain
+            cfg.CreateMap<OperatingDocModel, OperatingDoc>()
+            .ForMember(dest => dest.user, mo => mo.MapFrom(src => new User { UserId = src.UserId }));
+            #endregion
+
         };
 
         public static void Init()

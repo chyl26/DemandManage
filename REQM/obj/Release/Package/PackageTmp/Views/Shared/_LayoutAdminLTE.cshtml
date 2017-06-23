@@ -194,7 +194,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="~/Account/Login" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="~/Account/Logoff" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -290,7 +290,21 @@
                         <a href="#">
                             <i class="fa fa-object-group"></i>
                             <span>需求池管理</span>
-                        </a>                        
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-pencil-square-o"></i>Bug管理</a>
+                            </li>
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-bug"></i>KANA需求分析</a>
+                            </li>
+                            <li>
+                                <a href="~/ProductInfo/Create"><i class="fa fa-bug"></i>测试记录</a>
+                            </li>
+                        </ul>                      
                     </li>
                     <!--  常用工具结束  -->
                     <li class="header">其它实用</li>

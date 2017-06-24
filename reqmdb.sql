@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50615
+Source Server         : ed
+Source Server Version : 50718
 Source Host           : localhost:3306
 Source Database       : reqmdb
 
 Target Server Type    : MYSQL
-Target Server Version : 50615
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2017-06-18 22:00:54
+Date: 2017-06-24 16:55:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,15 +20,16 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `helpdocs`;
 CREATE TABLE `helpdocs` (
-  `ProductId` char(36) DEFAULT NULL,
-  `HelpDocId` char(36) DEFAULT NULL,
+  `HelpDocId` char(36) NOT NULL,
   `HelpDocName` varchar(255) DEFAULT NULL,
   `Content` mediumtext,
-  `CreateAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `CreateAt` datetime NOT NULL,
   `Reviser` varchar(255) DEFAULT NULL,
-  `UpdateAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `Revision` varchar(255) DEFAULT NULL,
-  `UserId` char(36) DEFAULT NULL
+  `UpdateAt` datetime DEFAULT NULL,
+  `Revision` mediumtext,
+  `UserId` char(36) NOT NULL,
+  `ProductId` char(36) NOT NULL,
+  PRIMARY KEY (`HelpDocId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -63,20 +64,23 @@ INSERT INTO `logics` VALUES ('e3567103-17d4-4463-9d45-a46c9e3faeb5', '这是第�
 -- ----------------------------
 DROP TABLE IF EXISTS `operatingdocs`;
 CREATE TABLE `operatingdocs` (
-  `OperatingId` char(35) NOT NULL,
-  `OperatingName` varchar(0) DEFAULT NULL,
+  `OperatingId` char(36) NOT NULL,
+  `OperatingName` varchar(255) DEFAULT NULL,
   `Content` mediumtext,
   `CreateAt` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `Reviser` varchar(255) DEFAULT NULL,
   `UpdateAt` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `UserId` char(255) NOT NULL,
-  `ProductId` mediumtext NOT NULL,
+  `Revision` mediumtext,
+  `UserId` char(36) NOT NULL,
+  `ProductId` char(36) NOT NULL,
   PRIMARY KEY (`OperatingId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of operatingdocs
 -- ----------------------------
+INSERT INTO `operatingdocs` VALUES ('f68c1055-9181-4b36-93f7-7663ccc1ee95', '这是一个产品运营方案', '<p>Error executing query \'InsertOperatingDoc\' for insert.&nbsp; Cause: Data too long for column \'OperatingId\' at row 1</p><p>Error executing query \'InsertOperatingDoc\' for insert.&nbsp; Cause: Data too long for column \'OperatingId\' at row 1<br></p>', '0001-01-01 00:00:00', null, '2017-06-24 15:32:33', '        public User user { get; set; }\r\n            <li><a href=\"~/Home/Index\"><i class=\"fa fa-dashboard\"></i> Home</a></li>\r\n            <li class=\"active\">产品运营方案</li>', 'e082dd28-c9fc-44bc-964e-cc49bee63512', '09b90699-187a-4998-bbb1-362e18b33505');
+INSERT INTO `operatingdocs` VALUES ('fc242628-ce1c-4345-89f7-b798f0e4670c', '这是一个产品运营方案', '<p>Error executing query \'InsertOperatingDoc\' for insert.&nbsp; Cause: Data too long for column \'OperatingId\' at row 1<br></p>', '0001-01-01 00:00:00', 'chyl26', '2017-06-24 15:43:33', '魂牵梦萦地地李斐莉雪 ', 'e082dd28-c9fc-44bc-964e-cc49bee63512', '09b90699-187a-4998-bbb1-362e18b33505');
 
 -- ----------------------------
 -- Table structure for `productinfos`

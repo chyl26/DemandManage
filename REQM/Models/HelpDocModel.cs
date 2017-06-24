@@ -1,4 +1,5 @@
-﻿using System;
+﻿using REQM.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,13 +9,12 @@ namespace REQM.Models
 {
     public class HelpDocModel
     {
-        [Required(ErrorMessage = "产品编号不能为空")]
         public string ProductId { get; set; }
 
-        [Required(ErrorMessage = "文档编号不能为空")]
+
         public string HelpDocId { get; set; }
 
-        [Required(ErrorMessage = "文档名称不能为空")]
+        [Required(ErrorMessage = "文档标题不能为空")]
         [Display(Name = "文档名称")]
         public string HelpDocName { get; set; }
 
@@ -32,6 +32,8 @@ namespace REQM.Models
 
         [Display(Name = "更新记录")]
         public string Revision { get; set; }
+
+        public User user { get; set; }
 
         public string UserId { get; set; }
 

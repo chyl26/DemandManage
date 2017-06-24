@@ -120,5 +120,17 @@ namespace REQM.Helper
             return model.MapTo<OperatingDocModel, OperatingDoc>();
         }
         #endregion
+
+        #region  HelpDoc
+        public static HelpDocModel ToModel(this HelpDoc entity)
+        {
+            return entity.MapTo<HelpDoc, HelpDocModel>();
+        }
+
+        public static HelpDoc ToEntity(this HelpDocModel model)
+        {
+            return model.MapTo<HelpDocModel, HelpDoc>();
+        }
+        #endregion
     }
 }

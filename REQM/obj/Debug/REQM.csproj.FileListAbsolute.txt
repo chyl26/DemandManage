@@ -278,6 +278,7 @@ E:\DevStudy\DemandManage\REQM\bin\zh-Hans\System.Web.Mvc.resources.dll
 E:\DevStudy\DemandManage\REQM\obj\Debug\REQM.dll
 E:\DevStudy\DemandManage\REQM\obj\Debug\REQM.pdb
 E:\DevStudy\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache
+E:\projects\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache
 E:\DemandManage\REQM\bin\ApplicationInsights.config
 E:\DemandManage\REQM\bin\roslyn\csc.exe
 E:\DemandManage\REQM\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -296,6 +297,7 @@ E:\DemandManage\REQM\bin\providers.config
 E:\DemandManage\REQM\bin\REQM.dll.config
 E:\DemandManage\REQM\bin\REQM.dll
 E:\DemandManage\REQM\bin\REQM.pdb
+E:\DemandManage\REQM\bin\Antlr3.Runtime.dll
 E:\DemandManage\REQM\bin\AutoMapper.dll
 E:\DemandManage\REQM\bin\Castle.DynamicProxy.dll
 E:\DemandManage\REQM\bin\IBatisNet.Common.dll
@@ -314,14 +316,18 @@ E:\DemandManage\REQM\bin\MySql.Data.Entity.EF5.dll
 E:\DemandManage\REQM\bin\MySql.Data.Entity.EF6.dll
 E:\DemandManage\REQM\bin\MySql.Fabric.Plugin.dll
 E:\DemandManage\REQM\bin\MySql.Web.dll
+E:\DemandManage\REQM\bin\Newtonsoft.Json.dll
 E:\DemandManage\REQM\bin\PagedList.dll
 E:\DemandManage\REQM\bin\PagedList.Mvc.dll
 E:\DemandManage\REQM\bin\System.Web.Helpers.dll
 E:\DemandManage\REQM\bin\System.Web.Mvc.dll
+E:\DemandManage\REQM\bin\System.Web.Optimization.dll
 E:\DemandManage\REQM\bin\System.Web.Razor.dll
 E:\DemandManage\REQM\bin\System.Web.WebPages.Deployment.dll
 E:\DemandManage\REQM\bin\System.Web.WebPages.dll
 E:\DemandManage\REQM\bin\System.Web.WebPages.Razor.dll
+E:\DemandManage\REQM\bin\WebGrease.dll
+E:\DemandManage\REQM\bin\Antlr3.Runtime.pdb
 E:\DemandManage\REQM\bin\AutoMapper.xml
 E:\DemandManage\REQM\bin\Microsoft.AI.DependencyCollector.xml
 E:\DemandManage\REQM\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -329,10 +335,12 @@ E:\DemandManage\REQM\bin\Microsoft.AI.Web.xml
 E:\DemandManage\REQM\bin\Microsoft.AI.WindowsServer.xml
 E:\DemandManage\REQM\bin\Microsoft.ApplicationInsights.xml
 E:\DemandManage\REQM\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\DemandManage\REQM\bin\Newtonsoft.Json.xml
 E:\DemandManage\REQM\bin\PagedList.xml
 E:\DemandManage\REQM\bin\PagedList.Mvc.xml
 E:\DemandManage\REQM\bin\System.Web.Helpers.xml
 E:\DemandManage\REQM\bin\System.Web.Mvc.xml
+E:\DemandManage\REQM\bin\System.Web.Optimization.xml
 E:\DemandManage\REQM\bin\System.Web.Razor.xml
 E:\DemandManage\REQM\bin\System.Web.WebPages.xml
 E:\DemandManage\REQM\bin\System.Web.WebPages.Deployment.xml
@@ -343,7 +351,5 @@ E:\DemandManage\REQM\bin\zh-Hans\System.Web.Razor.resources.dll
 E:\DemandManage\REQM\bin\zh-Hans\System.Web.WebPages.resources.dll
 E:\DemandManage\REQM\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 E:\DemandManage\REQM\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-E:\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache
 E:\DemandManage\REQM\obj\Debug\REQM.dll
 E:\DemandManage\REQM\obj\Debug\REQM.pdb
-E:\projects\DemandManage\REQM\obj\Debug\REQM.csprojResolveAssemblyReference.cache

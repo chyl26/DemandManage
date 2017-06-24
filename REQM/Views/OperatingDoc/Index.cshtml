@@ -1,0 +1,59 @@
+﻿@model List<OperatingDoc>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminLTE.cshtml";
+}
+
+<!-- 内容标题 -->
+<section class="content-header">
+    <h1>
+        运营方案列表
+        <small>产品管理</small>
+    </h1>
+    <!--  导航地图  -->
+    <ol class="breadcrumb">
+        <li><a href="~/Home/Index"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="~/ProductInfo/Index"><i class="fa fa-dashboard"></i> 产品管理</a></li>
+        <li class="active">运营方案</li>
+    </ol>
+</section>
+
+<!-- 内容Panel -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"></h3>
+            <div class="pull-left">
+                <a class="btn btn-primary" href="~/OperatingDoc/Create"><i class="fa fa-plus"></i> 创建文档</a>
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered table-condensed table-hover table-striped">
+                <tr>
+                    <td align="center">@Html.LabelFor(m => m[0].OperatingName)</td>
+                    <td align="center">@Html.LabelFor(m => m[0].CreateAt)</td>
+                    <td align="center"><label>创建/修改人</label></td>
+                    <td align="center"><label>操作</label></td>
+                </tr>
+                @foreach (var OperatingDocs in Model)
+                {
+                    <tr>
+                        <td align="center"><a href="@Url.Content("~/OperatingDoc/Details/"+OperatingDocs.OperatingId)">@Html.DisplayFor(m => OperatingDocs.OperatingName)</a></td>
+                        <td align="center"><a href="@Url.Content("~/OperatingDoc/Details/"+OperatingDocs.OperatingId)">@Html.DisplayFor(m => OperatingDocs.CreateAt)</a></td>
+                        <td align="center"><a href="@Url.Content("~/OperatingDoc/Details/"+OperatingDocs.OperatingId)">@Html.DisplayFor(m => OperatingDocs.user.DisplayName)</a></td>
+                        <td align="center">
+                            <a href="@Url.Content("~/OperatingDoc/Details/"+OperatingDocs.OperatingId)">详情</a> |
+                            <a href="@Url.Content("~/OperatingDoc/Edit/"+OperatingDocs.OperatingId)">编辑</a> |
+                            <a href="@Url.Content("~/OperatingDoc/Delete/"+OperatingDocs.OperatingId)">删除</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+</section>
+

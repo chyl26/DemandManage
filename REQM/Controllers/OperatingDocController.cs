@@ -14,8 +14,9 @@ namespace REQM.Controllers
     public class OperatingDocController : Controller
     {
         public OperatingDocService DBCRUD = new OperatingDocService();
+        public UserService userCRUD = new UserService();
 
-        // GET: RepData
+        // GET: Operating
         public ActionResult Index()
         {
             return View(DBCRUD.GetOperatingDocs());
@@ -35,19 +36,19 @@ namespace REQM.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authentication]
-        public ActionResult Create(OperatingDoc operatingDoc)
+        public ActionResult Create(OperatingDocModel operatingDoc)
         {
             if (ModelState.IsValid)
             {
-                repOther.RepOtherId = Guid.NewGuid().ToString();
-                repOther.CreateAt = DateTime.Now;
+                operatingDoc.OperatingId = Guid.NewGuid().ToString();
+                operatingDoc.CreateAt = DateTime.Now;
                 string userId = HttpContext.Session["UserId"] as string;
-                repOther.UserId = userId;
+                operatingDoc.UserId = userId;
                 //将Models类转换成Domain类
-                OperatingDoc toEntity = repOther.ToEntity();
+                OperatingDoc toEntity = operatingDoc.ToEntity();
                 DBCRUD.Create(toEntity);
 
-                return RedirectToAction("Details", "OperatingDoc", new { id = repOther.ProductId });
+                return RedirectToAction("Index", "OperatingDoc");
             }
             return View(operatingDoc);
         }
@@ -69,17 +70,17 @@ namespace REQM.Controllers
         [Authentication]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(OperatingDoc operatingDoc)
+        public ActionResult Edit(OperatingDocModel operatingDoc)
         {
             if (ModelState.IsValid)
             {
                 operatingDoc.UpdateAt = DateTime.Now;
                 string userId = HttpContext.Session["UserId"] as string;
-                operatingDoc.Reviser = userId;
+                operatingDoc.Reviser = userCRUD.GetUserById(userId).UserName;
                 //将Models类转换成Domain类
                 OperatingDoc toEntity = operatingDoc.ToEntity();
                 DBCRUD.Update(toEntity);
-                return RedirectToAction("Details", "OperatingDoc", new { id = operatingDoc.ProductId });
+                return RedirectToAction("Index", "OperatingDoc");
             }
             return View(operatingDoc);
         }
@@ -98,12 +99,10 @@ namespace REQM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //获取删除的对象实体
-            OperatingDoc operatingDoc = DBCRUD.GetOperatingDocById(Id);
             //删除数据库记录
             DBCRUD.Delete(Id);
             //返回上个界面
-            return RedirectToAction("Details", "OperatingDoc", new { id = operatingDoc.ProductId });
+            return RedirectToAction("Index", "OperatingDoc");
         }
 
 

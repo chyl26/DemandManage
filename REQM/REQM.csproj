@@ -244,12 +244,16 @@
     <EmbeddedResource Include="MapFiles\OperatingDoc.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapFiles\HelpDoc.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HelpDocController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OperatingDocController.cs" />
     <Compile Include="Controllers\Product\InteractiveController.cs" />
@@ -294,6 +298,7 @@
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\MbRepository.cs" />
+    <Compile Include="Service\HelpDocService.cs" />
     <Compile Include="Service\InteractiveService.cs" />
     <Compile Include="Service\LogicService.cs" />
     <Compile Include="Service\OperatingDocService.cs" />
@@ -368,6 +373,14 @@
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\OperatingDoc\Index.cshtml" />
+    <Content Include="Views\OperatingDoc\Edit.cshtml" />
+    <Content Include="Views\OperatingDoc\Details.cshtml" />
+    <Content Include="Views\OperatingDoc\Create.cshtml" />
+    <Content Include="Views\HelpDoc\Details.cshtml" />
+    <Content Include="Views\HelpDoc\Edit.cshtml" />
+    <Content Include="Views\HelpDoc\Create.cshtml" />
+    <Content Include="Views\HelpDoc\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -382,7 +395,6 @@
     <Folder Include="Content\adminLTE\dist\" />
     <Folder Include="Content\adminLTE\plugins\" />
     <Folder Include="Views\File\" />
-    <Folder Include="Views\OperatingDoc\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

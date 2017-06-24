@@ -1,4 +1,5 @@
-﻿using System;
+﻿using REQM.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace REQM.Models
 
         [Display(Name = "创建时间")]
         public DateTime CreateAt { get; set; }
+
+        public User user { get; set; }
 
         [Display(Name = "修订人")]
         public string Reviser { get; set; }

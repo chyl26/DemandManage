@@ -54,8 +54,8 @@ namespace REQM.Service
         /// <returns></returns>
         public IList<HelpDoc> GetHelpDocs()
         {
-            IList<HelpDoc> helpDoc = repository.GetList("SelectHelpDocByCondition", null);
-            return helpDoc;
+            IList<HelpDoc> helpDoclist = repository.GetList("SelectHelpDocByCondition", null);
+            return helpDoclist;
         }
     }
 }

@@ -80,7 +80,7 @@ namespace REQM.Controllers
                 //将Models类转换成Domain类
                 HelpDoc toEntity = helpDoc.ToEntity();
                 DBCRUD.Update(toEntity);
-                return RedirectToAction("Index", "OperatingDoc");
+                return RedirectToAction("Index", "HelpDoc");
             }
             return View(helpDoc);
         }
